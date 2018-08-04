@@ -46,6 +46,16 @@ class NegasController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def nega_params
-      params.fetch(:nega, {})
+      params.require(:nega).permit(
+        [
+          :type,
+          :description,
+          films_attributes: %I[
+            id
+            photo
+            _destroy
+          ]
+        ]
+      )
     end
 end
