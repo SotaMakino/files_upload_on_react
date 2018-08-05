@@ -1,5 +1,5 @@
 class NegasController < ApplicationController
-  before_action :set_nega, only: [:show, :update, :destroy]
+  before_action :set_nega, only: %I[show update destroy]
 
   # GET /negas
   def index
@@ -39,23 +39,24 @@ class NegasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_nega
-      @nega = Nega.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def nega_params
-      params.require(:nega).permit(
-        [
-          :title,
-          :description,
-          films_attributes: %I[
-            id
-            photo
-            _destroy
-          ]
+  # Use callbacks to share common setup or constraints between actions.
+  def set_nega
+    @nega = Nega.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def nega_params
+    params.require(:nega).permit(
+      [
+        :title,
+        :description,
+        films_attributes: %I[
+          id
+          photo
+          _destroy
         ]
-      )
-    end
+      ]
+    )
+  end
 end
