@@ -1,8 +1,7 @@
-//to ensure that the API base URL is pointing to the Rails server
 
-let axios = require('axios');
+var axios = require('axios');
 
-let axiosClient = axios.create({
+var axiosClient = axios.create({
   baseURL: 'http://localhost:3000'
 });
 

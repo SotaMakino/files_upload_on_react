@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axiosClient from '../axiosClient';
-import './Index.css';
+import axiosClient from '../../axiosClient';
+import './index.css';
 
 class NegaForm extends Component {
   state = {
@@ -87,9 +87,10 @@ class NegaForm extends Component {
     </div>
    );
   }
+
   handleCancel() {}
   handleFormSubmit() {}
-}
+
 
   handleNegaTypeChange(e) {
     let { nega } = this.state;
@@ -223,115 +224,117 @@ class NegaForm extends Component {
     );
   }
 
-  removeSelectedNegaFilmFile(film, index) {
-  let { selectedNegaFilmFiles } = this.state;
-  if (film.id) { // film file that has been uploaded will be marked as destroy
-    selectedNegaFilmFiles[index]._destroy = true;
-  } else {
-    selectedNegaFilmFiles.splice(index, 1);
-  }
-
-  this.setState({
-    selectedNegaFilmFiles: selectedNegaFilmFiles
-  });
-}
-
-handleCancel() {
-  this.props.history.push('/negas');
-}
-
-handleFormSubmit() {
-  let { nega } = this.state;
-  nega.errors = {};
-  this.setState(
-    {
-      isSubmittingForm: true,
-      nega: nega
-    },
-    () => {
-      this.submitForm();
-    }
-  );
-}
-
-buildFormData() {
-  let formData = new FormData();
-  formData.append('nega[type]', this.state.nega.type);
-  formData.append('nega[description]', this.state.nega.description);
-
-  let { selectedNegaFilmFiles } = this.state;
-  for (let i = 0; i < selectedNegaFilmFiles.length; i++) {
-    let file = selectedNegaFilmFiles[i];
-    if (file.id) {
-      if (file._destroy) {
-        formData.append(`nega[films_attributes][${i}][id]`, file.id);
-        formData.append(`nega[films_attributes][${i}][_destroy]`, '1');
-      }
+    removeSelectedNegaFilmFile(film, index) {
+    let { selectedNegaFilmFiles } = this.state;
+    if (film.id) { // film file that has been uploaded will be marked as destroy
+      selectedNegaFilmFiles[index]._destroy = true;
     } else {
-      formData.append(
-        `nega[films_attributes][${i}][photo]`,
-        file,
-        file.name
-      );
+      selectedNegaFilmFiles.splice(index, 1);
     }
-  }
-  return formData;
-}
 
-submitForm() {
-  let submitMethod = this.state.nega.id ? 'patch' : 'post';
-  let url = this.state.nega.id
-    ? `/negas/${this.state.nega.id}.json`
-    : '/negas.json';
-
-  axiosClient
-    [submitMethod](url, this.buildFormData(), {
-      onUploadProgress: progressEvent => {
-        let percentage = progressEvent.loaded * 100.0 / progressEvent.total;
-        this.setState({
-          submitFormProgress: percentage
-        });
-      }
-    })
-    .then(response => {
-      this.setState({
-        didFormSubmissionComplete: true
-      });
-      this.props.history.push('/negas');
-    })
-    .catch(error => {
-      let { nega } = this.state;
-      nega.errors = error.response.data;
-      this.setState({
-        isSubmittingForm: false,
-        submitFormProgress: 0,
-        nega: nega
-      });
+    this.setState({
+      selectedNegaFilmFiles: selectedNegaFilmFiles
     });
-}
-
-renderUploadFormProgress() {
-  if (this.state.isSubmittingForm === false) {
-    return null;
   }
 
-  return (
-    <div className="progress">
-      <div
-        className={
-          'progress-bar progress-bar-info progress-bar-striped' +
-          (this.state.submitFormProgress < 100 ? 'active' : '')
+  handleCancel() {
+    this.props.history.push('/negas');
+  }
+
+  handleFormSubmit() {
+    let { nega } = this.state;
+    nega.errors = {};
+    this.setState(
+      {
+        isSubmittingForm: true,
+        nega: nega
+      },
+      () => {
+        this.submitForm();
+      }
+    );
+  }
+
+  buildFormData() {
+    let formData = new FormData();
+    formData.append('nega[type]', this.state.nega.type);
+    formData.append('nega[description]', this.state.nega.description);
+
+    let { selectedNegaFilmFiles } = this.state;
+    for (let i = 0; i < selectedNegaFilmFiles.length; i++) {
+      let file = selectedNegaFilmFiles[i];
+      if (file.id) {
+        if (file._destroy) {
+          formData.append(`nega[films_attributes][${i}][id]`, file.id);
+          formData.append(`nega[films_attributes][${i}][_destroy]`, '1');
         }
-        role="progressbar"
-        aria-valuenow={this.state.submitFormProgress}
-        areaValuemin="0"
-        areaValuemax="100"
-        style={{ width: this.state.submitFormProgress + '%' }}>
-        {this.state.submitFormProgress}% Complete
+      } else {
+        formData.append(
+          `nega[films_attributes][${i}][photo]`,
+          file,
+          file.name
+        );
+      }
+    }
+    return formData;
+  }
+
+  submitForm() {
+    let submitMethod = this.state.nega.id ? 'patch' : 'post';
+    let url = this.state.nega.id
+      ? `/negas/${this.state.nega.id}.json`
+      : '/negas.json';
+
+    axiosClient
+      [submitMethod](url, this.buildFormData(), {
+        onUploadProgress: progressEvent => {
+          let percentage = progressEvent.loaded * 100.0 / progressEvent.total;
+          this.setState({
+            submitFormProgress: percentage
+          });
+        }
+      })
+      .then(response => {
+        this.setState({
+          didFormSubmissionComplete: true
+        });
+        this.props.history.push('/negas');
+      })
+      .catch(error => {
+        let { nega } = this.state;
+        nega.errors = error.response.data;
+        this.setState({
+          isSubmittingForm: false,
+          submitFormProgress: 0,
+          nega: nega
+        });
+    });
+  }
+
+  renderUploadFormProgress() {
+    if (this.state.isSubmittingForm === false) {
+      return null;
+    }
+
+    return (
+      <div className="progress">
+        <div
+          className={
+            'progress-bar progress-bar-info progress-bar-striped' +
+            (this.state.submitFormProgress < 100 ? 'active' : '')
+          }
+          role="progressbar"
+          aria-valuenow={this.state.submitFormProgress}
+          areaValuemin="0"
+          areaValuemax="100"
+          style={{ width: this.state.submitFormProgress + '%' }}>
+          {this.state.submitFormProgress}% Complete
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
 
 
 export default NegaForm;
