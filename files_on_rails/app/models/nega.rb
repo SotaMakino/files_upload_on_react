@@ -11,7 +11,7 @@ class Nega < ApplicationRecord
       title: title,
       description: description,
       errors: errors,
-      film_photos: filmss.map do |x|
+      film_photos: films.map do |x|
         {
           url: x.photo.url.absolute_url,
           name: x.photo_file_name,
