@@ -29,7 +29,7 @@ class NegaIndex extends Component {
           <thead>
             <tr>
               <th>#</th>
-              <th>Typy</th>
+              <th>Type</th>
               <th>Description</th>
               <th>Actions</th>
             </tr>

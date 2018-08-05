@@ -1,5 +1,5 @@
 class Nega < ApplicationRecord
-  validates :type, presence: true
+  validates :title, presence: true
   validates :description, presence: true
 
   has_many :films, dependent: :destroy
@@ -8,7 +8,7 @@ class Nega < ApplicationRecord
   def as_json(_opts = {})
     {
       id: id,
-      type: type,
+      title: title,
       description: description,
       errors: errors,
       film_photos: filmss.map do |x|

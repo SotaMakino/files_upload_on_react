@@ -48,7 +48,7 @@ class NegasController < ApplicationController
     def nega_params
       params.require(:nega).permit(
         [
-          :type,
+          :title,
           :description,
           films_attributes: %I[
             id
