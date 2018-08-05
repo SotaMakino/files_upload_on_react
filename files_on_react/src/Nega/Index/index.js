@@ -29,7 +29,7 @@ class NegaIndex extends Component {
           <thead>
             <tr>
               <th>#</th>
-              <th>Type</th>
+              <th>Title</th>
               <th>Description</th>
               <th>Actions</th>
             </tr>
@@ -54,7 +54,7 @@ class NegaIndex extends Component {
             {nega.id}
           </td>
           <td>
-            {nega.type}
+            {nega.title}
           </td>
           <td>
             {nega.description}

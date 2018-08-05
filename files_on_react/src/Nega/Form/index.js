@@ -10,7 +10,7 @@ class NegaForm extends Component {
     didFormSubmissionComplete: false,
     nega: {
       id: this.props.match.params.id,
-      type: '',
+      title: '',
       description: '',
       errors: {}
     }
@@ -24,7 +24,7 @@ class NegaForm extends Component {
           selectednegaFilmFiles: response.data.film_photos,
           nega: {
             id: response.data.id,
-            type: response.data.type,
+            title: response.data.title,
             description: response.data.description,
             errors: {}
           }
@@ -44,14 +44,14 @@ class NegaForm extends Component {
       <div className="NegaForm">
         <form>
           <div className="form-group">
-            <label>type</label>
+            <label>title</label>
             <input
               type="text"
-              onChange={e => this.handleNegaTypeChange(e)}
-              value={this.state.nega.type}
+              onChange={e => this.handleNegaTitleChange(e)}
+              value={this.state.nega.title}
               className="form-control"
             />
-            {this.renderNegaTypeInlineError()}
+            {this.renderNegaTitleInlineError()}
           </div>
           <div className="form-group">
             <label>Description</label>
@@ -214,9 +214,9 @@ class NegaForm extends Component {
     );
   }
 
-  handleNegaTypeChange(e) {
+  handleNegaTitleChange(e) {
     let { nega } = this.state;
-    nega.type = e.target.value;
+    nega.title = e.target.value;
     this.setState({ nega: nega });
   }
 
@@ -226,11 +226,11 @@ class NegaForm extends Component {
     this.setState({ nega: nega });
   }
 
-  renderNegaTypeInlineError() {
-    if (this.state.nega.errors.type) {
+  renderNegaTitleInlineError() {
+    if (this.state.nega.errors.title) {
       return (
         <div className="inline-error alert alert-danger">
-          {this.state.nega.errors.type.join(', ')}
+          {this.state.nega.errors.title.join(', ')}
         </div>
       );
     } else {
@@ -256,7 +256,7 @@ class NegaForm extends Component {
 
   buildFormData() {
     let formData = new FormData();
-    formData.append('nega[type]', this.state.nega.type);
+    formData.append('nega[title]', this.state.nega.title);
     formData.append('nega[description]', this.state.nega.description);
 
     let { selectedNegaFilmFiles } = this.state;
