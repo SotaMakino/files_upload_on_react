@@ -6,7 +6,7 @@ div.NegaForm div.inline-error {
   position: relative;
 }
 
-div.NegaForm ul.selected-covers {
+div.NegaForm ul.selected-films {
   flex-wrap: wrap;
   padding: 0;
   list-style-type: none;
@@ -14,14 +14,14 @@ div.NegaForm ul.selected-covers {
   margin-top: 10px;
 }
 
-div.NegaForm ul.selected-covers li {
+div.NegaForm ul.selected-films li {
   width: 150px;
   overflow: hidden;
   margin-right: 10px;
   margin-bottom: 10px;
 }
 
-div.NegaForm ul.selected-covers li div.photo {
+div.NegaForm ul.selected-films li div.photo {
   width: 150px;
   height: 150px;
   overflow: hidden;
@@ -32,7 +32,7 @@ div.NegaForm ul.selected-covers li div.photo {
   position: relative;
 }
 
-div.NegaForm ul.selected-covers li div.photo div.remove {
+div.NegaForm ul.selected-films li div.photo div.remove {
   color: #fff;
   position: absolute;
   top: 10px;
@@ -48,7 +48,7 @@ div.NegaForm ul.selected-covers li div.photo div.remove {
   right: 10px;
 }
 
-div.NegaForm ul.selected-covers li div.file-name {
+div.NegaForm ul.selected-films li div.file-name {
   color: #999;
   text-align: center;
   margin-top: 10px;
