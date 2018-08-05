@@ -1,5 +1,5 @@
 class NegasController < ApplicationController
-  before_action :set_nega, only: %I[show update destroy]
+  before_action :set_nega, only: [:show, :update, :destroy]
 
   # GET /negas
   def index

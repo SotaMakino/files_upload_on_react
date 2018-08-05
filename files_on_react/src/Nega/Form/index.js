@@ -21,7 +21,7 @@ class NegaForm extends Component {
       axiosClient.get(`/negas/${this.props.match.params.id}`).then(response => {
         console.log(response.data);
         this.setState({
-          selectednegaFilmFiles: response.data.film_photos,
+          selectedNegaFilmFiles: response.data.film_photos,
           nega: {
             id: response.data.id,
             title: response.data.title,
