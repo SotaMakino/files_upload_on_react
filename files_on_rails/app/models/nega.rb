@@ -13,7 +13,7 @@ class Nega < ApplicationRecord
       errors: errors,
       film_photos: films.map do |x|
         {
-          url: x.photo.url,
+          url: x.photo.url.absolute_url,
           name: x.photo_file_name,
           id: x.id
         }
