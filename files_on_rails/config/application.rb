@@ -28,7 +28,7 @@ module FilesUploadDemo
         resource \
            '*',
            headers: :any,
-           methods: %I[get post options delete patch puts]
+           methods: [get post options delete patch puts]
       end
     end
 
