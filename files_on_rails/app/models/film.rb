@@ -1,5 +1,4 @@
 class Film < ApplicationRecord
-  belongs_to :user
   belongs_to :nega, inverse_of: :films
   has_attached_file \
     :photo,
