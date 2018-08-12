@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post "/graphql", to: "graphql#execute"
   get '/auth/github', to: 'authentication#github', format: false
   resources :users
   resources :negas

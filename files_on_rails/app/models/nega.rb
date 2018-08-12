@@ -2,7 +2,6 @@ class Nega < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
 
-  belongs_to :user
   has_many :films, dependent: :destroy
   accepts_nested_attributes_for :films, allow_destroy: true
 
