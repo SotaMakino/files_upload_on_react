@@ -4,10 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.0'
 
 
-gem 'bcrypt', '~> 3.1.11' # is needed for has_secure_password
-gem 'graphiql-rails', '~> 1.4.10', group: :development
-gem 'graphql', '~> 1.7.14'
-gem 'graphql-preload', '~> 1.0.4' # is needed to fix N + 1 query issue
 gem 'jwt', '~> 2.1.0'
 gem 'rack-cors', '~> 1.0.2'
 gem 'paperclip', '~> 5.2.0'
