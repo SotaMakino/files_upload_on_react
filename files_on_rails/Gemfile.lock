@@ -43,7 +43,6 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
-    bcrypt (3.1.12)
     bootsnap (1.3.1)
       msgpack (~> 1.0)
     builder (3.2.3)
@@ -53,22 +52,16 @@ GEM
       climate_control (>= 0.0.3, < 1.0)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+    dotenv (2.5.0)
+    dotenv-rails (2.5.0)
+      dotenv (= 2.5.0)
+      railties (>= 3.2, < 6.0)
     erubi (1.7.1)
+    faraday (0.15.2)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    graphiql-rails (1.4.11)
-      railties
-      sprockets-rails
-    graphql (1.7.14)
-    graphql-batch (0.3.9)
-      graphql (>= 0.8, < 2)
-      promise.rb (~> 0.7.2)
-    graphql-preload (1.0.4)
-      activerecord (>= 3.2, < 6)
-      graphql (>= 1.5, < 2)
-      graphql-batch (~> 0.3)
-      promise.rb (~> 0.7)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     jwt (2.1.0)
@@ -92,6 +85,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     msgpack (1.2.4)
+    multipart-post (2.0.0)
     mysql2 (0.5.2)
     nio4r (2.3.1)
     nokogiri (1.8.4)
@@ -102,7 +96,6 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-    promise.rb (0.7.4)
     puma (3.12.0)
     rack (2.0.5)
     rack-cors (1.0.2)
@@ -161,12 +154,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcrypt (~> 3.1.11)
   bootsnap (>= 1.1.0)
   byebug
-  graphiql-rails (~> 1.4.10)
-  graphql (~> 1.7.14)
-  graphql-preload (~> 1.0.4)
+  dotenv-rails
+  faraday
   jwt (~> 2.1.0)
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.4.4, < 0.6.0)
