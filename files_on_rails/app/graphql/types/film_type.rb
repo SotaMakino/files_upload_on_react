@@ -5,6 +5,7 @@ Types::FilmType = GraphQL::ObjectType.define do
   field :id, !types.ID
 
   field :nega, Types::NegaType do
+  	preload :nega
     resolve lambda { |obj, _args, _ctx|
       obj.nega
     }

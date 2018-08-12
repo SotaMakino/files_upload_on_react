@@ -1,3 +1,4 @@
+require 'graphql/batch'
 Types::AuthType = GraphQL::ObjectType.define do
   name 'AuthType'
 
