@@ -6,6 +6,11 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   field :films, !types[Types::FilmType] do
     resolve lambda { |_obj, _args, ctx|
+
+      if ctx[:current_user].blank?
+        raise GraphQL::ExecutionError, 'Authentication required'
+      end
+
       Film.all
     }
   end
