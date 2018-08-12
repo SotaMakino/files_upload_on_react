@@ -2,7 +2,9 @@ require 'test_helper'
 
 class NegasControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @nega = negas(:one)
+    @user = users(:one)
+    @token = TokiToki.encode(@user.login)
+    @nega = @user.negas.first
   end
 
   test "should get index" do
@@ -12,14 +14,23 @@ class NegasControllerTest < ActionDispatch::IntegrationTest
 
   test "should create nega" do
     assert_difference('Nega.count') do
-      post negas_url, params: { nega: {  } }, as: :json
+      post negas_url, params: {
+        token: @token,
+        nega: {
+          title: @nega.title,
+          description: @nega.description,
+          user_id: @nega.user_id
+        }
+      }, as: :json
     end
 
     assert_response 201
   end
 
   test "should show nega" do
-    get nega_url(@nega), as: :json
+    get nega_url(@nega), params: {
+      token: @token
+    }
     assert_response :success
   end
 
