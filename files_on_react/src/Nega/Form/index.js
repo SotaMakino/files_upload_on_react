@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axiosClient from '../../axiosClient';
 import './index.css';
+import Button from 'react-toolbox/lib/button/Button';
 
 class NegaForm extends Component {
   state = {

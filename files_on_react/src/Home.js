@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './Home.css'
+import { getQueryParams } from './utils';
+import Login from './Login';
+import './Welcome.css';
 
 class Home extends Component {
-  render(){
-    return(
-        <Link to="/negas">Index</Link>
-      )
+  constructor() {
+    super();
+
+    const params = getQueryParams();
+    this.state = { token: params.token };
   }
- }
+
+  isLoggedIn() {
+    return !!this.state.token;
+  }
+
+  render() {
+    return (
+      <div className='App'>
+        {this.isLoggedIn()
+          ? <Main token={this.state.token} />
+          : <Login />
+        }
+      </div>
+    );
+  }
+}
 
 export default Home;
