@@ -1,19 +1,19 @@
 @import "./toolbox/theme.css";
 
-.Welcome {
+.Home {
   flex-direction: column;
   min-height: 100vh;
   text-align: center;
 }
 
-.Welcome h1 {
+.Home h1 {
   text-align: center;
   font-size: 4.0em;
 }
 
 
 
-@keyframes Welcome-logo-spin {
+@keyframes Home-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }

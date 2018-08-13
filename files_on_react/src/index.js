@@ -8,7 +8,7 @@ import Routes from './Routes.js';
 
 ReactDOM.render(
 	<ThemeProvider theme={theme}>
-	<Routes />
+	<Home />
     </ThemeProvider>,
 	document.getElementById('root')
 	);
