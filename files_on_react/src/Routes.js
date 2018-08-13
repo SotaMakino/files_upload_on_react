@@ -12,13 +12,15 @@ import Header from './Header';
 const history = createBrowserHistory();
 const Routes = () =>
   <Router history={history}>
+    <div>
+    <Header/>
     <Switch>
-      <Header />
       <Route path="/negas/:id/edit" component={NegaEdit} />
       <Route path="/negas/new" component={NegaNew} />
       <Route path="/negas/" component={NegaIndex} />
       <Route path="*" component={Welcome} />
     </Switch>
+    </div>
   </Router>;
 
 export default Routes;
