@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Switch, Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
@@ -12,7 +12,7 @@ import { getQueryParams } from './utils';
 import './Routes.css';
 
 
-class Routes extends React.Component {
+class Routes extends Component {
 
   constructor() {
     super();
@@ -23,7 +23,7 @@ class Routes extends React.Component {
 
   isLoggedIn() {
     console.log(getQueryParams());
-    console.log();
+    console.log(this.state.token);
     return !!this.state.token;
   }
 
@@ -45,7 +45,7 @@ class Routes extends React.Component {
           : <Login />
          }
       </div>
-      );
+    );
   }
 }
 

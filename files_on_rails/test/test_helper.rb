@@ -10,5 +10,7 @@ class ActiveSupport::TestCase
 end
 
 
+require 'bundler/setup'
+
 require 'dotenv'
-Dotenv.load('.env.sample')
+Dotenv.load('.env')
