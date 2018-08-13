@@ -3,4 +3,4 @@ require 'dotenv'
 
 Dotenv.load ".env"
 
-puts ENV["JWT_SECRET"]
+puts ENV["FLASHCARDS_CLIENT_URL"]
