@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getQueryParams } from './utils';
 import Login from './Auth/Login';
 import Routes from './Routes';
-import './Welcome.css';
+import './Home.css';
 
 class Home extends Component {
   constructor() {
@@ -18,7 +18,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className='Home'>
         {this.isLoggedIn()
           ? <Routes token={this.state.token} />
           : <Login />
