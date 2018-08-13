@@ -6,3 +6,22 @@ export function getQueryParams() {
     return memo;
   }, {});
 }
+
+const baseApiUrl = 'https://127.0.0.1:8000/negas';
+
+export function fetchUserDetails(options) {
+  const { token } = options;
+  const url = `${baseApiUrl}/user?token=${token}`;
+
+  return fetch(url, {
+    headers: {
+      'Accept': 'application/json'
+    },
+  })
+  .then(response => {
+    return response.json();
+  })
+  .catch(error => {
+    console.error('Could not fetch user details', error);
+  });
+}
