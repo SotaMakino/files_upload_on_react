@@ -1,6 +1,7 @@
 class NegasController < ApplicationController
-  before_action :set_nega, only: [:show, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_nega, only: [:show, :update, :destroy]
+  
   # GET /negas
   def index
     @negas = @current_user.negas

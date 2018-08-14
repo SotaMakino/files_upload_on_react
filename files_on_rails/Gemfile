@@ -5,7 +5,7 @@ ruby '2.6.0'
 
 gem 'dotenv-rails'
 gem 'faraday'
-gem 'jwt', '~> 2.1.0'
+gem 'jwt'
 gem 'rack-cors', '~> 1.0.2'
 gem 'paperclip', '~> 5.2.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
