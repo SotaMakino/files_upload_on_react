@@ -12,6 +12,7 @@ class Header extends Component {
 
   render() {
     const { info } = this.props;
+    console.log(info);
 
     return (
       <AppBar title='Negabook' leftIcon='menu'>

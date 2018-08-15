@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_12_082654) do
+ActiveRecord::Schema.define(version: 2018_08_15_093543) do
 
   create_table "films", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "nega_id"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_08_12_082654) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar_url"
   end
 
 end
