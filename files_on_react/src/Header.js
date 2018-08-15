@@ -12,7 +12,6 @@ class Header extends Component {
 
   render() {
     const { info } = this.props;
-    console.log(this.props);
 
     return (
       <AppBar title='Negabook'>
