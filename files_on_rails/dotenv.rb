@@ -1,4 +1,4 @@
 require 'bundler/setup'
 require 'dotenv'
 
-Dotenv.load ".env"
+Dotenv.load '.env'

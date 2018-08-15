@@ -7,7 +7,7 @@ export function getQueryParams() {
   }, {});
 }
 
-const baseApiUrl = 'https://127.0.0.1:8000/negas';
+const baseApiUrl = 'http://localhost:3000/';
 
 export function fetchUserDetails(options) {
   const { token } = options;
