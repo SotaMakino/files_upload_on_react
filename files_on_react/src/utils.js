@@ -7,7 +7,7 @@ export function getQueryParams() {
   }, {});
 }
 
-const baseApiUrl = 'http://localhost:3000/';
+const baseApiUrl = 'http://127.0.0.1:3000';
 
 export function fetchUserDetails(options) {
   const { token } = options;
