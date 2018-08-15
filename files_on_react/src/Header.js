@@ -15,7 +15,7 @@ class Header extends Component {
     console.log(this.props);
 
     return (
-      <AppBar title='Negabook' leftIcon='menu'>
+      <AppBar title='Negabook'>
         <Navigation type='horizontal'>
           {info != null && (
             <span>
