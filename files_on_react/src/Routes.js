@@ -22,14 +22,12 @@ class Routes extends Component {
   }
 
   isLoggedIn() {
-    console.log(getQueryParams());
-    console.log(this.state.token);
     return !!this.state.token;
   }
 
   render() {
     return(
-      <div className='Home'>
+      <div className='Routes'>
         {this.isLoggedIn()
           ? <Router token={this.state.token} history={history}>
               <div>

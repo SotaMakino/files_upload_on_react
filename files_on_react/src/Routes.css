@@ -1,19 +1,5 @@
-@import "./toolbox/theme.css";
-
-.Home {
+.Routes {
+  display: flex;
   flex-direction: column;
   min-height: 100vh;
-  text-align: center;
-}
-
-.Home h1 {
-  text-align: center;
-  font-size: 4.0em;
-}
-
-
-
-@keyframes Home-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
