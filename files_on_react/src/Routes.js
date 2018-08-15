@@ -28,6 +28,13 @@ class Routes extends Component {
 
   }
 
+  fetchUserDetails() {
+    utils.fetchUserDetails({ token: this.state.token })
+      .then(info => {
+        this.setState({ info })
+      });
+  }
+
   isLoggedIn() {
     return !!this.state.token;
   }
@@ -56,13 +63,6 @@ class Routes extends Component {
          }
       </div>
     );
-  }
-
-  fetchUserDetails() {
-    utils.fetchUserDetails({ token: this.props.token })
-      .then(info => {
-        this.setState({ info })
-      });
   }
 
 }
