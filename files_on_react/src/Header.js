@@ -34,6 +34,13 @@ class Header extends Component {
             className='Header-link'
             onClick={this.handleClickLogOut}
           />
+          <Link
+            path=''
+            active
+            label='Post'
+            icon='explore'
+            className='Header-link'
+          />
         </Navigation>
       </AppBar>
     );
