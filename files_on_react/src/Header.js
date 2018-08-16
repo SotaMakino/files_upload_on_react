@@ -12,7 +12,6 @@ class Header extends Component {
 
   render() {
     const { info } = this.props;
-    console.log(this.props);
 
     return (
       <AppBar title='Negabook'>
@@ -34,6 +33,13 @@ class Header extends Component {
             icon='exit_to_app'
             className='Header-link'
             onClick={this.handleClickLogOut}
+          />
+          <Link
+            path=''
+            active
+            label='Post'
+            icon='explore'
+            className='Header-link'
           />
         </Navigation>
       </AppBar>
