@@ -23,6 +23,6 @@ class AuthenticationController < ApplicationController
   private
 
   def issuer
-    ENV['FLASHCARDS_CLIENT_URL']
+    ENV['NEGABOOK_URL']
   end
 end

@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 
-import NegaIndex from './Nega/Index';
-import NegaNew from './Nega/New';
-import NegaEdit from './Nega/Edit';
 import Welcome from './Welcome';
-
 import Login from './Auth/Login';
 import Header from './Header';
 import { getQueryParams } from './utils';
@@ -48,15 +44,10 @@ class Routes extends Component {
     return(
       <div className='Routes'>
         {this.isLoggedIn()
-          ? <Router token={this.state.token} history={history}>
+          ? <Router history={history}>
               <div>
-              <Header info={info}/>
-              <Switch>
-                <Route path="/negas/:id/edit" component={NegaEdit} />
-                <Route path="/negas/new" component={NegaNew} />
-                <Route path="/negas/" component={NegaIndex} />
-                <Route path="*" component={Welcome} />
-              </Switch>
+                <Header info={info}/>
+                <Welcome/>
               </div>
             </Router>
           : <Login />
