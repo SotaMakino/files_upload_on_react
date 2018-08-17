@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Gallery from 'react-photo-gallery';
 
 const photos = [
@@ -19,11 +18,10 @@ class Welcome extends Component {
   render(){
     return(
     	<div className="Welcome">
-      <Gallery photos={photos} />
-            <Link to="/negas">Index</Link>
-        </div>
+        <Gallery photos={photos} />
+      </div>
       );
-  }
+    }
  }
 
 export default Welcome;

@@ -10,6 +10,10 @@ class Header extends Component {
     window.location.href = window.location.href.replace(/\?.*$/, '');
   }
 
+  handleRenderPath() {
+    console.log('aaa');
+  }
+
   render() {
     const { info } = this.props;
 
@@ -35,11 +39,12 @@ class Header extends Component {
             onClick={this.handleClickLogOut}
           />
           <Link
-            path=''
+            href='/negas'
             active
             label='Post'
-            icon='explore'
+            icon='image'
             className='Header-link'
+            onClick={this.handleRenderPath}
           />
         </Navigation>
       </AppBar>
