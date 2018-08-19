@@ -1,0 +1,27 @@
+.Negas {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 3;
+}
+
+.Negas-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+}
+
+.Negas-index {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  left: 0;
+  text-align: center;
+}
+
+.Negas-button {
+  margin: 0 50px;
+}

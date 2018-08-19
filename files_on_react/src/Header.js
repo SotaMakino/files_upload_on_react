@@ -38,14 +38,6 @@ class Header extends Component {
             className='Header-link'
             onClick={this.handleClickLogOut}
           />
-          <Link
-            href='/negas'
-            active
-            label='Post'
-            icon='image'
-            className='Header-link'
-            onClick={this.handleRenderPath}
-          />
         </Navigation>
       </AppBar>
     );

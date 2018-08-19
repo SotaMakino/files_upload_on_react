@@ -17,11 +17,10 @@ class App extends Component {
   }
 
   render() {
-    const { info } = this.state;
     return(
       <div className='App'>
         {this.isLoggedIn()
-          ? <Routes token={this.state.token}/>
+          ? <Routes token={this.state.token} />
           : <Login />
          }
       </div>
