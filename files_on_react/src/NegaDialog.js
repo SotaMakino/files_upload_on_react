@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dialog from 'react-toolbox/lib/dialog/Dialog';
 import Input from 'react-toolbox/lib/input/Input';
+import './NegaDialog.css';
 
 class NegaDialog extends Component {
   
@@ -36,7 +37,7 @@ class NegaDialog extends Component {
 
     return (
       <Dialog
-        title='Edit Nega'
+        title='New Nega'
         active={true}
         actions={[
           { label: 'Cancel', onClick: this.handleClickCancel },
@@ -63,7 +64,12 @@ class NegaDialog extends Component {
           multiline={true}
           onChange={this.handleChange.bind(null, 'description')}
         />
+        <div className="NegaForm">
+        <div className="form-group">
         {this.renderUploadFilmsButton()}
+        {this.renderSelectedNegaFilmFiles()}
+        </div>
+        </div>
       </Dialog>
     )
   }
@@ -90,7 +96,6 @@ class NegaDialog extends Component {
       }
     );
   }
-
 
   renderUploadFilmsButton() {
     let numberOfSelectedFilms = this.getNumberOfSelectedFiles();
@@ -130,6 +135,54 @@ class NegaDialog extends Component {
       </div>
     );
   }
+
+  renderSelectedNegaFilmFiles() {
+    let fileDOMs = this.state.selectedNegaFilmFiles.map((el, index) => {
+      if (el._destroy) {
+        return null;
+      }
+
+      return (
+        <li key={index}>
+          <div className="photo">
+            <img
+              width={180}
+              src={el.id ? el.url : URL.createObjectURL(el)}
+              style={{ alignSelf: 'center' }}
+            />
+            <div
+              className="remove"
+              onClick={() => this.removeSelectedNegaFilmFile(el, index)}>
+              <span style={{ top: 2 }} className="glyphicon glyphicon-remove" />
+            </div>
+          </div>
+          <div className="file-name">
+            {el.name}
+          </div>
+        </li>
+      );
+    });
+
+    return (
+      <ul className="selected-films">
+        {fileDOMs}
+      </ul>
+    );
+  }
+
+  removeSelectedNegaFilmFile(film, index) {
+    let { selectedNegaFilmFiles } = this.state;
+    if (film.id) {
+      selectedNegaFilmFiles[index]._destroy = true;
+    } else {
+      selectedNegaFilmFiles.splice(index, 1);
+    }
+
+    this.setState({
+      selectedNegaFilmFiles: selectedNegaFilmFiles
+    });
+  }
+
 
 }
 
