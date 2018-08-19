@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Nega from './Nega';
 import Button from 'react-toolbox/lib/button/Button';
 import Chip from 'react-toolbox/lib/chip/Chip';
+import './Negas.css';
 
 class Negas extends Component {
   renderNegas() {
@@ -11,14 +12,12 @@ class Negas extends Component {
     }
 
     if (this.props.negas.length === 0) {
-      return 'Add a nega for this tag!';
+      return 'zero data';
     }
 
     const {
       negas,
       selectedNegaIndex,
-      onClickPreviousNega,
-      onClickNextNega,
       onClickEdit,
       onClickDelete
     } = this.props;
@@ -28,10 +27,6 @@ class Negas extends Component {
     return (
       <div className='Negas-content'>
         <div className='Negas-button'>
-          <Button icon='keyboard_arrow_left' floating
-            disabled={selectedNegaIndex === 0}
-            onClick={onClickPreviousNega}
-          />
         </div>
         <Nega
           nega={currentNega}
@@ -39,10 +34,6 @@ class Negas extends Component {
           onClickDelete={onClickDelete}
         />
         <div className='Negas-button'>
-          <Button icon='keyboard_arrow_right' floating
-            disabled={selectedNegaIndex === negas.length - 1}
-            onClick={onClickNextNega}
-          />
         </div>
         <div className='Negas-index'>
           <Chip>

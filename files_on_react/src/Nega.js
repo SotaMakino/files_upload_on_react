@@ -17,15 +17,8 @@ class Nega extends Component {
       showDescription: false
     };
 
-    this.handleClickFlip = this.handleClickFlip.bind(this);
     this.handleClickEdit = this.handleClickEdit.bind(this);
     this.handleClickDelete = this.handleClickDelete.bind(this);
-  }
-
-  handleClickFlip() {
-    this.setState(prevState => {
-      return { showDescription: !prevState.showDescription };
-    });
   }
 
   handleClickEdit() {
@@ -80,13 +73,6 @@ class Nega extends Component {
             </div>
           }
         </CardText>
-        <CardActions className='Nega-actions'>
-          <Button
-            icon='replay'
-            label='Flip'
-            onClick={this.handleClickFlip}
-          />
-        </CardActions>
       </Card>
     );
   }
