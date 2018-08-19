@@ -1,20 +1,136 @@
 import React, { Component } from 'react';
-import { Switch, Router, Route } from 'react-router-dom';
-import createBrowserHistory from 'history/createBrowserHistory';
 import Header from './Header';
+import Button from 'react-toolbox/lib/button/Button';
+import Negas from './Negas.js';
+import NegaDialog from './NegaDialog';
+import Welcome from './Welcome';
 import * as axios from './axiosClient';
+import * as actions from './actions';
 import './Routes.css';
-
-const history = createBrowserHistory();
 
 class Routes extends Component {
 
   constructor() {
     super();
     this.state = {
-     info: null
+     info: null,
+     negas: null,
+     selectedNegaIndex: null,
+     negaInDialog: null
    };
 
+    this.handleClickPreviousNega = this.handleClickPreviousNega.bind(this);
+    this.handleClickNextNega = this.handleClickNextNega.bind(this);
+    this.handleCancelNegaDialog = this.handleCancelNegaDialog.bind(this);
+    this.handleCreateNega = this.handleCreateNega.bind(this);
+    this.handleEditNega = this.handleEditNega.bind(this);
+    this.handleChangeNega = this.handleChangeNega.bind(this);
+    this.handleSaveNega = this.handleSaveNega.bind(this);
+    this.handleDeleteNega = this.handleDeleteNega.bind(this);
+  }
+
+  handleClickPreviousNega() {
+    this.setState(prevState => {
+      return {
+        selectedNegaIndex: Math.max(0, prevState.selectedNegaIndex - 1)
+      };
+    });
+  }
+
+  handleClickNextNega() {
+    this.setState(prevState => {
+      return {
+        selectedNegaIndex: Math.min(prevState.selectedNegaIndex + 1, prevState.negas.length - 1)
+      };
+    });
+  }
+
+  handleCancelNegaDialog() {
+    this.setState({ negaInDialog: null });
+  }
+
+  handleCreateNega() {
+    console.log('clicked');
+    const nega = {
+      title: '',
+      description: ''
+    };
+    this.setState({ negaInDialog: nega });
+  }
+
+  handleEditNega(nega) {
+    this.setState({ negaInDialog: nega });
+  }
+
+  handleChangeNega(field, value) {
+    this.setState(prevState => {
+      const { negaInDialog } = prevState;
+      const newNegaInDialog = Object.assign(
+        {},
+        negaInDialog,
+        { [field]: value }
+      );
+      return { negaInDialog: newNegaInDialog };
+    });
+  }
+
+  handleSaveNega(nega) {
+    if (nega.id) {
+      this.updateNega(nega);
+    } else {
+      this.createNega(nega);
+    }
+  }
+
+  handleDeleteNega(nega) {
+    this.deleteNega(nega);
+  }
+
+  componentDidMount() {
+    this.fetchUserDetails();
+    this.fetchNegas();
+  }
+
+  render() {
+    const {
+      info,
+      negas,
+      selectedNegaIndex,
+      negaInDialog
+    } = this.state;
+
+    return(
+      <div className='Routes'>
+        <Header
+          info={info}
+        />
+        <div className='Routes-content'>
+          <Negas
+            negas={negas}
+            selectedNegaIndex={selectedNegaIndex}
+            onClickPreviousNega={this.handleClickPreviousNega}
+            onClickNextNega={this.handleClickNextNega}
+            onClickEdit={this.handleEditNega}
+            onClickDelete={this.handleDeleteNega}
+          />
+          <div className='Routes-button'>
+            <Button
+              icon='add'
+              floating
+              accent
+              onClick={this.handleCreateNega}
+            />
+          </div>
+        </div>
+        <NegaDialog
+          nega={negaInDialog}
+          onChange={this.handleChangeNega}
+          onSave={this.handleSaveNega}
+          onCancel={this.handleCancelNegaDialog}
+        />
+        <Welcome />
+      </div>
+    );
   }
 
   fetchUserDetails() {
@@ -24,24 +140,34 @@ class Routes extends Component {
       });
   }
 
-  componentDidMount() {
-    this.fetchUserDetails();
+  fetchNegas() {
+    axios.fetchNegas({ token: this.props.token })
+      .then(negas => {
+        this.setState({ negas, selectedNegaIndex: 0 })
+      });
   }
 
-  render() {
-    const { info } = this.state;
-    return(
-      <div className='Routes'>
-        <Router history={history}>
-            <div>
-            <Header info={info}/>
-            </div>
-        </Router>
-      </div>
-    );
+  createNega(nega) {
+    axios.createNega({ token: this.props.token, nega })
+      .then(nega => {
+        this.setState(actions.createNega.bind(null, nega));
+      });
+  }
+
+  updateNega(nega) {
+    axios.updateNega({ token: this.props.token, nega })
+      .then(nega => {
+        this.setState(actions.updateNega.bind(null, nega));
+      });
+  }
+
+  deleteNega(nega) {
+    axios.deleteNega({ token: this.props.token, nega })
+      .then(() => {
+        this.setState(actions.deleteNega.bind(null, nega));
+      });
   }
 
 }
-
 
 export default Routes;

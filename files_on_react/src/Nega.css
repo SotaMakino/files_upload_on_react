@@ -1,0 +1,17 @@
+.Nega-title,
+.Nega-description {
+  min-height: 200px;
+}
+
+.Nega-title p,
+.Nega-description p {
+  font-size: 18px;
+}
+
+.Nega-menu {
+  text-align: right;
+}
+
+.Nega-actions {
+  justify-content: center;
+}
