@@ -17,6 +17,7 @@ class NegasController < ApplicationController
   # POST /negas
   def create
     @nega = Nega.new(nega_params)
+    @nega.user = @current_user
 
     if @nega.save
       render json: @nega, status: :created, location: @nega
