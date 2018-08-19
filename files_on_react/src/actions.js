@@ -1,9 +1,8 @@
 import * as axios from './axiosClient';
 
 export function createNega(nega, prevState) {
-  const idComparator = (a, b) => (a.id === b.id);
   const newNegas = prevState.negas.concat(
-    axios.contains(nega, idComparator)
+    axios.contains(nega)
       ? nega
       : []
   );
@@ -19,7 +18,6 @@ export function createNega(nega, prevState) {
 export function updateNega(nega, prevState) {
   const { negas, selectedNegaIndex } = prevState;
 
-  const idComparator = (a, b) => (a.id === b.id);
   // Update nega with new information.
   const newNegas = negas.reduce((memo, f) => {
     if (f.id === nega.id) {

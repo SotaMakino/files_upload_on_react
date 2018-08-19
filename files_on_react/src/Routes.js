@@ -19,30 +19,12 @@ class Routes extends Component {
      negaInDialog: null
    };
 
-    this.handleClickPreviousNega = this.handleClickPreviousNega.bind(this);
-    this.handleClickNextNega = this.handleClickNextNega.bind(this);
     this.handleCancelNegaDialog = this.handleCancelNegaDialog.bind(this);
     this.handleCreateNega = this.handleCreateNega.bind(this);
     this.handleEditNega = this.handleEditNega.bind(this);
     this.handleChangeNega = this.handleChangeNega.bind(this);
     this.handleSaveNega = this.handleSaveNega.bind(this);
     this.handleDeleteNega = this.handleDeleteNega.bind(this);
-  }
-
-  handleClickPreviousNega() {
-    this.setState(prevState => {
-      return {
-        selectedNegaIndex: Math.max(0, prevState.selectedNegaIndex - 1)
-      };
-    });
-  }
-
-  handleClickNextNega() {
-    this.setState(prevState => {
-      return {
-        selectedNegaIndex: Math.min(prevState.selectedNegaIndex + 1, prevState.negas.length - 1)
-      };
-    });
   }
 
   handleCancelNegaDialog() {
@@ -108,8 +90,6 @@ class Routes extends Component {
           <Negas
             negas={negas}
             selectedNegaIndex={selectedNegaIndex}
-            onClickPreviousNega={this.handleClickPreviousNega}
-            onClickNextNega={this.handleClickNextNega}
             onClickEdit={this.handleEditNega}
             onClickDelete={this.handleDeleteNega}
           />
