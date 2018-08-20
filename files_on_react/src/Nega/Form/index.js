@@ -51,7 +51,6 @@ class NegaForm extends Component {
               value={this.state.nega.title}
               className="form-control"
             />
-            {this.renderNegaTitleInlineError()}
           </div>
           <div className="form-group">
             <label>Description</label>
@@ -61,14 +60,12 @@ class NegaForm extends Component {
               value={this.state.nega.description}
               className="form-control"
             />
-            {this.renderNegaDescriptionInlineError()}
           </div>
           <div className="form-group">
             <label>Films</label>
             {this.renderUploadFilmsButton()}
             {this.renderSelectedNegaFilmFiles()}
           </div>
-          {this.renderUploadFormProgress()}
           <button
             disabled={this.state.isSubmittingForm}
             onClick={e => this.handleFormSubmit()}
@@ -161,29 +158,6 @@ class NegaForm extends Component {
     );
   }
 
-  renderUploadFormProgress() {
-    if (this.state.isSubmittingForm === false) {
-      return null;
-    }
-
-    return (
-      <div className="progress">
-        <div
-          className={
-            'progress-bar progress-bar-info progress-bar-striped' +
-            (this.state.submitFormProgress < 100 ? 'active' : '')
-          }
-          role="progressbar"
-          aria-valuenow={this.state.submitFormProgress}
-          areavaluemin="0"
-          areavaluemax="100"
-          style={{ width: this.state.submitFormProgress + '%' }}>
-          {this.state.submitFormProgress}% Complete
-        </div>
-      </div>
-    );
-  }
-
   removeSelectedNegaFilmFile(film, index) {
     let { selectedNegaFilmFiles } = this.state;
     if (film.id) {
@@ -224,30 +198,6 @@ class NegaForm extends Component {
     let { nega } = this.state;
     nega.description = e.target.value;
     this.setState({ nega: nega });
-  }
-
-  renderNegaTitleInlineError() {
-    if (this.state.nega.errors.title) {
-      return (
-        <div className="inline-error alert alert-danger">
-          {this.state.nega.errors.title.join(', ')}
-        </div>
-      );
-    } else {
-      return null;
-    }
-  }
-
-  renderNegaDescriptionInlineError() {
-    if (this.state.nega.errors.description) {
-      return (
-        <div className="inline-error alert alert-danger">
-          {this.state.nega.errors.description.join(', ')}
-        </div>
-      );
-    } else {
-      return null;
-    }
   }
 
   handleCancel() {
