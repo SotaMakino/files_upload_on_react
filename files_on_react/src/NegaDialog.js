@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Dialog from 'react-toolbox/lib/dialog/Dialog';
 import Input from 'react-toolbox/lib/input/Input';
 import './NegaDialog.css';
+import * as axios from './axiosClient';
 
 class NegaDialog extends Component {
   
@@ -11,8 +12,8 @@ class NegaDialog extends Component {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleClickCancel = this.handleClickCancel.bind(this);
     this.handleClickSave = this.handleClickSave.bind(this);
+    this.handleClickCancel = this.handleClickCancel.bind(this);
   }
 
   handleChange(field, value) {
@@ -158,6 +159,7 @@ class NegaDialog extends Component {
           </div>
           <div className="file-name">
             {el.name}
+            {console.log(el)}
           </div>
         </li>
       );
@@ -182,7 +184,6 @@ class NegaDialog extends Component {
       selectedNegaFilmFiles: selectedNegaFilmFiles
     });
   }
-
 
 }
 
