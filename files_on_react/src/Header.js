@@ -10,10 +10,6 @@ class Header extends Component {
     window.location.href = window.location.href.replace(/\?.*$/, '');
   }
 
-  handleRenderPath() {
-    console.log('aaa');
-  }
-
   render() {
     const { info } = this.props;
 
