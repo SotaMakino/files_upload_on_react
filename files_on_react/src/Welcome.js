@@ -1,24 +1,31 @@
 import React, { Component } from 'react';
 import Gallery from 'react-photo-gallery';
-
-const photos = [
-  { src: 'https://source.unsplash.com/2ShvY8Lf6l0/800x599', width: 4, height: 3 },
-  { src: 'https://source.unsplash.com/Dm-qxdynoEc/800x799', width: 1, height: 1 },
-  { src: 'https://source.unsplash.com/qDkso9nvCg0/600x799', width: 3, height: 4 },
-  { src: 'https://source.unsplash.com/iecJiKe_RNg/600x799', width: 3, height: 4 },
-  { src: 'https://source.unsplash.com/epcsn8Ed8kY/600x799', width: 3, height: 4 },
-  { src: 'https://source.unsplash.com/NQSWvyVRIJk/800x599', width: 4, height: 3 },
-  { src: 'https://source.unsplash.com/zh7GEuORbUw/600x799', width: 3, height: 4 },
-  { src: 'https://source.unsplash.com/PpOHJezOalU/800x599', width: 4, height: 3 },
-  { src: 'https://source.unsplash.com/I1ASdgphUH4/800x599', width: 4, height: 3 }
-];
-
+import axios from 'axios';
 
 class Welcome extends Component {
+
+  state = { selectedFile: null }
+
+  fileSelectedHandler = event => {
+    this.setState({
+      selectedFile:event.target.files[0]
+    })
+  }
+
+  fileUploadHandler = () => {
+     const fd = new FormData();
+     fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+     axios.post('http://localhost:3000', fd)
+     .then(res => {
+      console.log(res);
+     });
+  }
+
   render(){
     return(
     	<div className="Welcome">
-        <Gallery photos={photos} />
+        <input type='file' onChange={this.fileSelectedHandler}/>
+        <button onClick={this.fileUploadHandler}>Upload</button>
       </div>
       );
     }
