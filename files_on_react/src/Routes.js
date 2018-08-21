@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Button from 'react-toolbox/lib/button/Button';
-import Negas from './Negas.js';
 import NegaDialog from './NegaDialog';
 import Welcome from './Welcome';
 import * as axios from './axiosClient';
@@ -86,12 +85,6 @@ class Routes extends Component {
           info={info}
         />
         <div className='Routes-content'>
-          <Negas
-            negas={negas}
-            selectedNegaIndex={selectedNegaIndex}
-            onClickEdit={this.handleEditNega}
-            onClickDelete={this.handleDeleteNega}
-          />
           <div className='Routes-button'>
             <Button
               icon='add'
