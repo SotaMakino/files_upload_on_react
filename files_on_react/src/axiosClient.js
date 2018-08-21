@@ -67,6 +67,19 @@ export function createNega(options) {
   });
 }
 
+/////////////////////
+export function uploadImage (image, options) {
+  const { token } = options;
+  const formData = new FormData();
+  const url = baseURL;
+  formData.append('photo', image);
+  fetch(url, {
+    method:'POST',
+     body: formData
+  });
+}
+/////////////////////
+
 export function updateNega(options) {
   const { token, nega } = options;
   const url = `${baseURL}/negas/${nega.id}?token=${token}`;
@@ -115,28 +128,28 @@ export function contains(arr, elem, comparator) {
   return (findIndex(arr, elem, comparator) !== -1);
 }
 
-export function unique(arr, comparator) {
-  return arr.filter((elem, index) => (
-    index === findIndex(arr, elem, comparator)
-  ));
-}
+// export function unique(arr, comparator) {
+//   return arr.filter((elem, index) => (
+//     index === findIndex(arr, elem, comparator)
+//   ));
+// }
 
-export function union(arr1, arr2, comparator) {
-  return unique(arr1.concat(arr2), comparator);
-}
+// export function union(arr1, arr2, comparator) {
+//   return unique(arr1.concat(arr2), comparator);
+// }
 
-export function sortObjects(arr, key) {
-  return arr.slice().sort((a, b) => {
-    const valueA = a[key];
-    const valueB = b[key];
-    if (valueA < valueB) {
-      return -1;
-    }
-    if (valueA > valueB) {
-      return 1;
-    }
-    return 0;
-  });
-}
+// export function sortObjects(arr, key) {
+//   return arr.slice().sort((a, b) => {
+//     const valueA = a[key];
+//     const valueB = b[key];
+//     if (valueA < valueB) {
+//       return -1;
+//     }
+//     if (valueA > valueB) {
+//       return 1;
+//     }
+//     return 0;
+//   });
+// }
 
 export default axiosClient;
