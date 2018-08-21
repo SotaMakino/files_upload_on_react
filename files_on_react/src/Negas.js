@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Nega from './Nega';
-import Button from 'react-toolbox/lib/button/Button';
 import Chip from 'react-toolbox/lib/chip/Chip';
 import './Negas.css';
 

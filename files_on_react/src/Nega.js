@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 import Card from 'react-toolbox/lib/card/Card';
 import CardText from 'react-toolbox/lib/card/CardText';
-import CardActions from 'react-toolbox/lib/card/CardActions';
-import Button from 'react-toolbox/lib/button/Button';
 import IconMenu from 'react-toolbox/lib/menu/IconMenu';
 import MenuItem from 'react-toolbox/lib/menu/MenuItem';
 import MenuDivider from 'react-toolbox/lib/menu/MenuDivider';
-import Markdown from './Markdown';
 import './Nega.css'
 
 class Nega extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      showDescription: false
-    };
 
     this.handleClickEdit = this.handleClickEdit.bind(this);
     this.handleClickDelete = this.handleClickDelete.bind(this);
@@ -29,18 +22,8 @@ class Nega extends Component {
       this.props.onClickDelete(this.props.nega);
   }
 
-  componentDidUpdate(prevProps) {
-    const currentNegaId = this.props.nega.id;
-    const prevNegaId = prevProps.nega.id;
-
-    if (currentNegaId !== prevNegaId) {
-      this.setState({ showDescription: false })
-    }
-  }
-
   render() {
     const { nega } = this.props;
-    const { showDescription } = this.state;
 
     return (
       <Card className='Nega'>
@@ -64,14 +47,12 @@ class Nega extends Component {
           />
         </IconMenu>
         <CardText>
-          {!showDescription ?
             <div className='Nega-title'>
-              <Markdown source={nega.title} />
-            </div> :
+              {nega.title}
+            </div> 
             <div className='Nega-Description'>
-              <Markdown source={nega.description} />
+              {nega.description}
             </div>
-          }
         </CardText>
       </Card>
     );
