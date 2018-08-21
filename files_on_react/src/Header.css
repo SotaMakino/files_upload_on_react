@@ -1,0 +1,16 @@
+.Header {
+  flex: none;
+}
+
+.Header-link {
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.Header-userName {
+  padding: 0 15px;
+}
+
+.Header-title {
+  font-size: 100px;
+}

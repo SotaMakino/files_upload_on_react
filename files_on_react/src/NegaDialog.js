@@ -1,48 +1,64 @@
 import React, { Component } from 'react';
-import axiosClient from '../../axiosClient';
-import './index.css';
+import Dialog from 'react-toolbox/lib/dialog/Dialog';
+import Input from 'react-toolbox/lib/input/Input';
+import './NegaDialog.css';
+import axiosClient from './axiosClient';
+import './Nega/Form/index.css';
 
-class NegaForm extends Component {
+class NegaDialog extends Component {
+  
   state = {
     selectedNegaFilmFiles: [],
-    submitFormProgress: 0,
     isSubmittingForm: false,
     didFormSubmissionComplete: false,
     nega: {
-      id: this.props.match.params.id,
+      id: '',
       title: '',
       description: '',
       errors: {}
     }
   };
 
-  componentWillMount() {
-    if (this.props.match.params.id) {
-      axiosClient.get(`/negas/${this.props.match.params.id}`).then(response => {
-        console.log(response.data);
-        this.setState({
-          selectedNegaFilmFiles: response.data.film_photos,
-          nega: {
-            id: response.data.id,
-            title: response.data.title,
-            description: response.data.description,
-            errors: {}
-          }
-        });
-      });
-    }
+  constructor(props) {
+    super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClickSave = this.handleClickSave.bind(this);
+    this.handleClickCancel = this.handleClickCancel.bind(this);
   }
 
-  getNumberOfSelectedFiles() {
-    return this.state.selectedNegaFilmFiles.filter(el => {
-      return el._destroy !== true;
-    }).length;
+  handleChange(field, value) {
+    this.props.onChange(field, value);
+  }
+
+  handleClickSave() {
+    this.props.onSave(this.props.nega);
+  }
+
+  handleClickCancel() {
+    this.props.onCancel();
   }
 
   render() {
+    if (this.props.nega == null) {
+      return null;
+    }
+
+    const { nega } = this.props;
+    const { title, description } = nega;
+
     return (
-      <div className="NegaForm">
-        <form>
+      <Dialog
+        title='New Nega'
+        active={true}
+        actions={[
+          { label: 'Cancel', onClick: this.handleClickCancel },
+          { label: 'Save', onClick: this.handleClickSave }
+        ]}
+        onOverlayClick={this.handleClickCancel}
+        onEscKeyDown={this.handleClickCancel}
+      >
+
           <div className="form-group">
             <label>title</label>
             <input
@@ -72,17 +88,15 @@ class NegaForm extends Component {
             className="btn btn-primary">
             {this.state.isSubmittingForm ? 'Saving...' : 'Save'}
           </button>
-          &nbsp;
-          <button
-            disabled={this.state.isSubmittingForm}
-            onClick={e => this.handleCancel()}
-            className="btn btn-default">
-            Cancel
-          </button>
-        </form>
-        <br />
-      </div>
-    );
+
+      </Dialog>
+    )
+  }
+
+  getNumberOfSelectedFiles() {
+    return this.state.selectedNegaFilmFiles.filter(el => {
+      return el._destroy !== true;
+    }).length;
   }
 
   renderUploadFilmsButton() {
@@ -158,19 +172,6 @@ class NegaForm extends Component {
     );
   }
 
-  removeSelectedNegaFilmFile(film, index) {
-    let { selectedNegaFilmFiles } = this.state;
-    if (film.id) {
-      selectedNegaFilmFiles[index]._destroy = true;
-    } else {
-      selectedNegaFilmFiles.splice(index, 1);
-    }
-
-    this.setState({
-      selectedNegaFilmFiles: selectedNegaFilmFiles
-    });
-  }
-
   handleNegaFilmsChange() {
     let selectedFiles = this.negaFilmsField.files;
     let { selectedNegaFilmFiles } = this.state;
@@ -198,10 +199,6 @@ class NegaForm extends Component {
     let { nega } = this.state;
     nega.description = e.target.value;
     this.setState({ nega: nega });
-  }
-
-  handleCancel() {
-    this.props.history.push('/negas');
   }
 
   buildFormData() {
@@ -273,6 +270,7 @@ class NegaForm extends Component {
       }
     );
   }
+
 }
 
-export default NegaForm;
+export default NegaDialog;

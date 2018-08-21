@@ -1,9 +1,10 @@
 class NegasController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_nega, only: [:show, :update, :destroy]
-
+  
   # GET /negas
   def index
-    @negas = Nega.all
+    @negas = @current_user.negas
 
     render json: @negas
   end
@@ -16,6 +17,7 @@ class NegasController < ApplicationController
   # POST /negas
   def create
     @nega = Nega.new(nega_params)
+    @nega.user = @current_user
 
     if @nega.save
       render json: @nega, status: :created, location: @nega
@@ -42,7 +44,7 @@ class NegasController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_nega
-    @nega = Nega.find(params[:id])
+    @nega = @current_user.negas.find(params[:id])
   end
 
   # Only allow a trusted parameter "white list" through.

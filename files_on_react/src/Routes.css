@@ -1,0 +1,17 @@
+.Routes {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.Routes-content {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.Routes-button {
+  position: fixed;
+  bottom: 40px;
+  right: 50px;
+}

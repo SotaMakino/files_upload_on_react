@@ -1,21 +1,33 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Routes from './Routes.js';
+import Login from './Auth/Login';
+import * as axios from './axiosClient';
 
 class App extends Component {
+
+  constructor() {
+    super();
+
+    const params = axios.getQueryParams();
+    this.state = { token: params.token };
+  }
+
+  isLoggedIn() {
+    return !!this.state.token;
+  }
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+    return(
+      <div className='App'>
+        {this.isLoggedIn()
+          ? <Routes token={this.state.token} />
+          : <Login />
+         }
       </div>
     );
   }
+
 }
+
 
 export default App;
