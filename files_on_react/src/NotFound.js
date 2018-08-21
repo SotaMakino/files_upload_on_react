@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class NotFound extends Component {
   render() {
     return (
       <div className="NotFound">
-        <h2>Not</h2>
+        <Link to='/negas'>aaa</Link>
       </div>
     );
   }
