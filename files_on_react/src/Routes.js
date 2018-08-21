@@ -32,7 +32,6 @@ class Routes extends Component {
   }
 
   handleCreateNega() {
-    console.log('clicked');
     const nega = {
       title: '',
       description: ''

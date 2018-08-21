@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Dialog from 'react-toolbox/lib/dialog/Dialog';
 import Input from 'react-toolbox/lib/input/Input';
 import './NegaDialog.css';
-import * as axios from './axiosClient';
 
 class NegaDialog extends Component {
   
@@ -58,8 +57,8 @@ class NegaDialog extends Component {
         />
         <Input
           type='text'
-          label='description'
           name='description'
+          label='Description'
           value={description}
           required={true}
           multiline={true}
