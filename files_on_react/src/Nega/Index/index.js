@@ -38,6 +38,7 @@ class NegaIndex extends Component {
             {this.renderTableBody()}
           </tbody>
         </table>
+        {this.renderSelectedNegaFilmFiles()}
       </div>
     );
   }
@@ -89,6 +90,38 @@ class NegaIndex extends Component {
     this.setState({ negas: negas });
     axiosClient.delete(`/negas/${negaId}`);
   }
+
+  renderSelectedNegaFilmFiles() {
+    let fileDOMs = this.state.negas.map((el, index) => {
+      if (el._destroy) {
+        return null;
+      }
+
+      return (
+        <li key={index}>
+         {console.log(el.film_photos[0].url)}
+          <div >
+            <img
+              width={150}
+              src={el.film_photos[0].url}
+              style={{ alignSelf: 'center' }}
+              alt="description of image"
+            />
+          </div>
+          <div >
+            {el.name}
+          </div>
+        </li>
+      );
+    });
+
+    return (
+      <ul>
+        {fileDOMs}
+      </ul>
+    );
+  }
+
 }
 
 export default NegaIndex;
