@@ -12,6 +12,8 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -34,3 +36,4 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
