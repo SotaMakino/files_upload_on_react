@@ -2,7 +2,7 @@
 let axios = require('axios');
 
 let axiosClient = axios.create({
-  baseURL: 'http://localhost:3000'
+  baseURL: 'https://negabook-server.herokuapp.com/'
 });
 
 export default axiosClient;
