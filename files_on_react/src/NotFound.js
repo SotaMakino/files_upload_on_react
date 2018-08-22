@@ -1,52 +1,94 @@
 import React, { Component } from 'react';
 import axiosClient from './axiosClient';
+import Gallery from "react-photo-gallery";
 
 class NotFound extends Component {
 
-  state = { negas: [] };
+  state = { 
+  	negas: []
+  };
+
 
   componentWillMount() {
     axiosClient.get('/negas.json').then(response => {
       this.setState({ negas: response.data });
+
     });
   }
 
   render() {
     return (
       <div className="NotFound">
+       <Gallery photos={defaultPhotos} />
+       <div>
        {this.renderAllNegaFilmFiles()}
+       </div>
       </div>
     );
   }
 
+
   renderAllNegaFilmFiles() {
-    let fileDOMs = this.state.negas.map((el, index) => {
+  	return this.state.negas.map(nega => {
+  	  return(
+  		  <img 
+  		    src={nega.film_photos[0].url }
+            width={400}
+            height={400}
+            margin={100}
+  		  />
+  	   );
+  	});
 
-      return (
-        <li key={index}>
-         {console.log(el.film_photos[0].url)}
-          <div >
-            <img
-              width={150}
-              src={el.film_photos[0].url}
-              style={{ alignSelf: 'center' }}
-              alt="description of image"
-            />
-          </div>
-          <div >
-            {el.name}
-          </div>
-        </li>
-      );
-    });
-
-    return (
-      <ul>
-        {fileDOMs}
-      </ul>
-    );
-  }
-
+   }
 }
+
+const defaultPhotos = [
+  {
+    src: "https://source.unsplash.com/2ShvY8Lf6l0/800x599",
+    width: 4,
+    height: 3
+  },
+  {
+    src: "https://source.unsplash.com/Dm-qxdynoEc/800x799",
+    width: 1,
+    height: 1
+  },
+  {
+    src: "https://source.unsplash.com/qDkso9nvCg0/600x799",
+    width: 3,
+    height: 4
+  },
+  {
+    src: "https://source.unsplash.com/iecJiKe_RNg/600x799",
+    width: 3,
+    height: 4
+  },
+  {
+    src: "https://source.unsplash.com/epcsn8Ed8kY/600x799",
+    width: 3,
+    height: 4
+  },
+  {
+    src: "https://source.unsplash.com/NQSWvyVRIJk/800x599",
+    width: 4,
+    height: 3
+  },
+  {
+    src: "https://source.unsplash.com/zh7GEuORbUw/600x799",
+    width: 3,
+    height: 4
+  },
+  {
+    src: "https://source.unsplash.com/PpOHJezOalU/800x599",
+    width: 4,
+    height: 3
+  },
+  {
+    src: "https://source.unsplash.com/I1ASdgphUH4/800x599",
+    width: 4,
+    height: 3
+  }
+];
 
 export default NotFound;
