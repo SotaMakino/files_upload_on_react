@@ -9,7 +9,7 @@ import Main from './Main';
 
 const history = createBrowserHistory();
 const Routes = () =>
-  <Router history={history}>
+  <Router history={history} basename={process.env.PUBLIC_URL}>
     <Switch>
       <Route path="/negas/:id/edit" component={NegaEdit} />
       <Route path="/negas/new" component={NegaNew} />
