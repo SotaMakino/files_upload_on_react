@@ -5,6 +5,7 @@
 .Header-link {
   color: #fff !important;
   text-decoration: none;
+  padding: 10px;
 }
 
 .Header-userName {

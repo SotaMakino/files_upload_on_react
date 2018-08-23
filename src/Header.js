@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 import Navigation from 'react-toolbox/lib/navigation/Navigation';
-import Link from 'react-toolbox/lib/link/Link';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 class Header extends Component {
@@ -14,20 +14,8 @@ class Header extends Component {
     return (
       <AppBar title='Negabook'>
         <Navigation type='horizontal'>
-          <Link
-            href='/'
-            active
-            label='Home'
-            icon='home'
-            className='Header-link'
-          />
-          <Link
-            href='/negas'
-            active
-            label='Negative Films'
-            icon='photo'
-            className='Header-link'
-          />
+          <Link to='/' className='Header-link'>Home</Link>
+          <Link to='/negas' className='Header-link'>Negative Films</Link>
         </Navigation>
       </AppBar>
     );
