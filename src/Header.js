@@ -15,14 +15,14 @@ class Header extends Component {
       <AppBar title='Negabook'>
         <Navigation type='horizontal'>
           <Link
-            href='/'
+            href='/negabook-client/'
             active
             label='Home'
             icon='home'
             className='Header-link'
           />
           <Link
-            href='/negas'
+            href='/negabook-client/negas'
             active
             label='Negative Films'
             icon='photo'
