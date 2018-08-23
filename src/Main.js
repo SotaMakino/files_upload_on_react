@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axiosClient from './axiosClient';
 import Gallery from "react-photo-gallery";
+import { Link } from 'react-router-dom';
 
 class Main extends Component {
 
@@ -17,6 +18,7 @@ class Main extends Component {
   render() {
     return (
       <div className="NotFound">
+       <Link to="/negas">Negas</Link>
        <Gallery photos={defaultPhotos} />
        <div>
        {this.renderAllNegaFilmFiles()}
