@@ -5,7 +5,7 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import NegaIndex from './Nega/Index';
 import NegaNew from './Nega/New';
 import NegaEdit from './Nega/Edit';
-import NotFound from './NotFound';
+import Main from './Main';
 
 const history = createBrowserHistory();
 const Routes = () =>
@@ -14,7 +14,7 @@ const Routes = () =>
       <Route path="/negas/:id/edit" component={NegaEdit} />
       <Route path="/negas/new" component={NegaNew} />
       <Route path="/negas/" component={NegaIndex} />
-      <Route path="*" component={NotFound} />
+      <Route path="*" component={Main} />
     </Switch>
   </Router>;
 

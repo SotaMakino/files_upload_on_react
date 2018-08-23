@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import axiosClient from './axiosClient';
 import Gallery from "react-photo-gallery";
 
-class NotFound extends Component {
+class Main extends Component {
 
   state = { 
   	negas: []
   };
 
-
   componentWillMount() {
     axiosClient.get('/negas.json').then(response => {
       this.setState({ negas: response.data });
-
     });
   }
 
@@ -27,7 +25,6 @@ class NotFound extends Component {
     );
   }
 
-
   renderAllNegaFilmFiles() {
   	return this.state.negas.map(nega => {
   	  return(
@@ -39,7 +36,6 @@ class NotFound extends Component {
   		  />
   	   );
   	});
-
    }
 }
 
@@ -91,4 +87,5 @@ const defaultPhotos = [
   }
 ];
 
-export default NotFound;
+export default Main
+;
