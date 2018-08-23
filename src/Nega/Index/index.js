@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axiosClient from '../../axiosClient';
+import Button from 'react-toolbox/lib/button/Button';
 
 class NegaIndex extends Component {
   constructor(props) {
@@ -18,11 +19,13 @@ class NegaIndex extends Component {
       <div className="NegaIndex col-md-12" style={{ marginTop: 10 }}>
         <div className="clearfix">
           <div className="pull-right">
-            <button
+            <Button
+              primary
+              icon='add'
               onClick={e => this.handleNewNega()}
               className="btn btn-success">
               New Nega
-            </button>
+            </Button>
           </div>
         </div>
         <table className="table">
@@ -31,7 +34,6 @@ class NegaIndex extends Component {
               <th>#</th>
               <th>Title</th>
               <th>Description</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -60,17 +62,17 @@ class NegaIndex extends Component {
             {nega.description}
           </td>
           <td>
-            <button
+            <Button
+              icon='edit'
               onClick={e => this.handleEdit(nega.id)}
-              className="btn btn-primary">
-              Edit
-            </button>
+            >
+            </Button>
             &nbsp;
-            <button
+            <Button
+              icon='delete'
               onClick={e => this.handleRemove(nega.id)}
-              className="btn btn-danger">
-              Remove
-            </button>
+            >
+            </Button>
           </td>
         </tr>
       );

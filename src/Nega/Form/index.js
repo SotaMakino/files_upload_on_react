@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axiosClient from '../../axiosClient';
+import Button from 'react-toolbox/lib/button/Button';
 import './index.css';
 
 class NegaForm extends Component {
@@ -69,19 +70,21 @@ class NegaForm extends Component {
             {this.renderSelectedNegaFilmFiles()}
           </div>
           {this.renderUploadFormProgress()}
-          <button
+          <Button
+            raised
+            accent
             disabled={this.state.isSubmittingForm}
             onClick={e => this.handleFormSubmit()}
             className="btn btn-primary">
             {this.state.isSubmittingForm ? 'Saving...' : 'Save'}
-          </button>
+          </Button>
           &nbsp;
-          <button
+          <Button
             disabled={this.state.isSubmittingForm}
             onClick={e => this.handleCancel()}
             className="btn btn-default">
             Cancel
-          </button>
+          </Button>
         </form>
         <br />
       </div>
