@@ -26,16 +26,10 @@ class Main extends Component {
   }
 
   renderAllNegaFilmFiles() {
-  	return this.state.negas.map(nega => {
-  	  return(
-  		  <img 
-  		    src={nega.film_photos[0].url }
-            width={400}
-            height={400}
-            margin={100}
-  		  />
-  	   );
-  	});
+  	let fileDOMs = this.state.negas.map((el) => {
+    return el.film_photos;
+    });
+    console.log(fileDOMs);
    }
 }
 
