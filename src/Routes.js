@@ -1,7 +1,6 @@
 import React from 'react';
-import { Switch, Router, Route, Link } from 'react-router-dom';
+import { Switch, Router, Route } from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
-
 import NegaIndex from './Nega/Index';
 import NegaNew from './Nega/New';
 import NegaEdit from './Nega/Edit';
