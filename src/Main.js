@@ -17,7 +17,7 @@ class Main extends Component {
   render() {
     return (
       <div className="NotFound">
-        <h1>version1.0</h1>
+        <h1>version1.1</h1>
         <Gallery photos={defaultPhotos} />
         <div>
         {this.renderAllNegaFilmFiles()}
