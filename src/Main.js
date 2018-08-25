@@ -17,10 +17,11 @@ class Main extends Component {
   render() {
     return (
       <div className="NotFound">
-       <Gallery photos={defaultPhotos} />
-       <div>
-       {this.renderAllNegaFilmFiles()}
-       </div>
+        <h1>version1.0</h1>
+        <Gallery photos={defaultPhotos} />
+        <div>
+        {this.renderAllNegaFilmFiles()}
+        </div>
       </div>
     );
   }
