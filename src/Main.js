@@ -16,8 +16,7 @@ class Main extends Component {
 
   render() {
     return (
-      <div className="NotFound">
-        <h1>version1.1</h1>
+      <div>
         <Gallery photos={defaultPhotos} />
         <div>
         {this.renderAllNegaFilmFiles()}
@@ -27,11 +26,16 @@ class Main extends Component {
   }
 
   renderAllNegaFilmFiles() {
-  	let fileDOMs = this.state.negas.map((el) => {
-    return el.film_photos;
+  	return this.state.negas.map(nega => {
+      return(
+        <img
+          src={nega.film_photos[0].url }
+            width={400}
+            height={400}
+        />
+       );
     });
-    console.log(fileDOMs);
-   }
+  }
 }
 
 const defaultPhotos = [

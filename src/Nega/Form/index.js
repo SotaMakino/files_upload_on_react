@@ -34,18 +34,12 @@ class NegaForm extends Component {
     }
   }
 
-  getNumberOfSelectedFiles() {
-    return this.state.selectedNegaFilmFiles.filter(el => {
-      return el._destroy !== true;
-    }).length;
-  }
-
   render() {
     return (
       <div className="NegaForm">
         <form>
           <div className="form-group">
-            <label>title</label>
+            <label>Title</label>
             <input
               type="text"
               onChange={e => this.handleNegaTitleChange(e)}
@@ -65,7 +59,7 @@ class NegaForm extends Component {
             {this.renderNegaDescriptionInlineError()}
           </div>
           <div className="form-group">
-            <label>Films</label>
+            <label>Photo</label>
             {this.renderUploadFilmsButton()}
             {this.renderSelectedNegaFilmFiles()}
           </div>
@@ -92,7 +86,6 @@ class NegaForm extends Component {
   }
 
   renderUploadFilmsButton() {
-    let numberOfSelectedFilms = this.getNumberOfSelectedFiles();
     return (
       <div>
         <input
@@ -120,11 +113,7 @@ class NegaForm extends Component {
           htmlFor="nega_films">
           <span className="glyphicon glyphicon-cloud-upload" />
           &nbsp; &nbsp;
-          {numberOfSelectedFilms === 0
-            ? 'Upload Files'
-            : `${numberOfSelectedFilms} file${numberOfSelectedFilms !== 1
-                ? 's'
-                : ''} selected`}
+          Upload One File
         </label>
       </div>
     );

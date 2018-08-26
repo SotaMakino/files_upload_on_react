@@ -17,6 +17,7 @@ class Header extends Component {
           <Link to='/' className='Header-link'>Home</Link>
           <Link to='/negas' className='Header-link'>Negative Films</Link>
         </Navigation>
+        <div>version 0.2</div>
       </AppBar>
     );
   }
