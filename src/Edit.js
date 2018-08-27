@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import NegaForm from '../Form';
+import NegaForm from './Form';
 
 class NegaEdit extends Component {
   render() {

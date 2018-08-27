@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import axiosClient from '../../axiosClient';
+import axiosClient from './axiosClient';
 import Button from 'react-toolbox/lib/button/Button';
 
-class NegaIndex extends Component {
+class NegaList extends Component {
   constructor(props) {
     super(props);
     this.state = { negas: [] };
@@ -31,7 +31,7 @@ class NegaIndex extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th>#</th>
+              <th>Id</th>
               <th>Title</th>
               <th>Description</th>
             </tr>
@@ -94,4 +94,4 @@ class NegaIndex extends Component {
 
 }
 
-export default NegaIndex;
+export default NegaList;
