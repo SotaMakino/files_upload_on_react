@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axiosClient from './axiosClient';
 import Button from 'react-toolbox/lib/button/Button';
 import './Form.css';
+import Dialog from 'react-toolbox/lib/dialog/Dialog';
 
 class NegaForm extends Component {
   state = {
@@ -36,8 +37,10 @@ class NegaForm extends Component {
 
   render() {
     return (
-      <div className="NegaForm">
-        <form>
+        <Dialog
+          title='New Nega'
+          active={true}
+        >
           <div className="form-group">
             <label>Title</label>
             <input
@@ -79,9 +82,8 @@ class NegaForm extends Component {
             className="btn btn-default">
             Cancel
           </Button>
-        </form>
-        <br />
-      </div>
+          <br/>
+        </Dialog>
     );
   }
 

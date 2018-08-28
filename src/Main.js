@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axiosClient from './axiosClient';
 import Gallery from "react-photo-gallery";
+import Button from 'react-toolbox/lib/button/Button';
+import './Main.css';
 
 class Main extends Component {
 
@@ -20,6 +22,13 @@ class Main extends Component {
         <Gallery photos={defaultPhotos} />
         <div>
         {this.renderAllNegaFilmFiles()}
+        </div>
+        <div className='Main-button'>
+            <Button
+              icon='add'
+              floating
+              accent
+            />
         </div>
       </div>
     );
