@@ -16,7 +16,7 @@ class NegaList extends Component {
 
   render() {
     return (
-      <div className="NegaIndex col-md-12" style={{ marginTop: 10 }}>
+      <div className="NegaIndex col-md-12" style={{ marginTop: 30 }}>
         <div className="clearfix">
           <div className="pull-right">
             <Button
@@ -31,6 +31,7 @@ class NegaList extends Component {
         <table className="table">
           <thead>
             <tr>
+              <th>Image</th>
               <th>Id</th>
               <th>Title</th>
               <th>Description</th>
@@ -48,10 +49,30 @@ class NegaList extends Component {
     this.props.history.push('/negas/new');
   }
 
+  handleEdit(negaId) {
+    this.props.history.push(`/negas/${negaId}/edit`);
+  }
+
+  handleRemove(negaId) {
+    let negas = this.state.negas;
+    negas = negas.filter(nega => {
+      return nega.id !== negaId;
+    });
+    this.setState({ negas: negas });
+    axiosClient.delete(`/negas/${negaId}`);
+  }
+
   renderTableBody() {
     return this.state.negas.map(nega => {
       return (
         <tr key={nega.id}>
+          <td>
+          <img
+            src={nega.film_photos[0].url}
+            width={50}
+            height={50}
+          />
+          </td>
           <td>
             {nega.id}
           </td>
@@ -79,18 +100,6 @@ class NegaList extends Component {
     });
   }
 
-  handleEdit(negaId) {
-    this.props.history.push(`/negas/${negaId}/edit`);
-  }
-
-  handleRemove(negaId) {
-    let negas = this.state.negas;
-    negas = negas.filter(nega => {
-      return nega.id !== negaId;
-    });
-    this.setState({ negas: negas });
-    axiosClient.delete(`/negas/${negaId}`);
-  }
 
 }
 
