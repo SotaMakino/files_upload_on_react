@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axiosClient from './axiosClient';
 import Button from 'react-toolbox/lib/button/Button';
-import './Form.css';
 import Dialog from 'react-toolbox/lib/dialog/Dialog';
+import './Form.css';
 
 class NegaForm extends Component {
   state = {
@@ -41,7 +41,7 @@ class NegaForm extends Component {
           title='New Nega'
           active={true}
         >
-          <div className="form-group">
+          <div>
             <label>Title</label>
             <input
               type="text"
@@ -51,7 +51,7 @@ class NegaForm extends Component {
             />
             {this.renderNegaTitleInlineError()}
           </div>
-          <div className="form-group">
+          <div>
             <label>Description</label>
             <textarea
               type="text"
@@ -61,7 +61,7 @@ class NegaForm extends Component {
             />
             {this.renderNegaDescriptionInlineError()}
           </div>
-          <div className="form-group">
+          <div>
             <label>Photo</label>
             {this.renderUploadFilmsButton()}
             {this.renderSelectedNegaFilmFiles()}
@@ -87,6 +87,38 @@ class NegaForm extends Component {
     );
   }
 
+  handleNegaTitleChange(e) {
+    let { nega } = this.state;
+    nega.title = e.target.value;
+    this.setState({ nega: nega });
+  }
+
+  handleNegaDescriptionChange(e) {
+    let { nega } = this.state;
+    nega.description = e.target.value;
+    this.setState({ nega: nega });
+  }
+
+  renderNegaTitleInlineError() {
+    if (this.state.nega.errors.title) {
+      return (
+        <div>
+          {this.state.nega.errors.title}
+        </div>
+      );
+    }
+  }
+
+  renderNegaDescriptionInlineError() {
+    if (this.state.nega.errors.description) {
+      return (
+        <div>
+          {this.state.nega.errors.description}
+        </div>
+      );
+    }
+  }
+
   renderUploadFilmsButton() {
     return (
       <div>
@@ -95,7 +127,7 @@ class NegaForm extends Component {
           ref={field => (this.negaFilmsField = field)}
           type="file"
           disabled={this.state.isSubmittingForm}
-          multiple={true}
+          multiple={false}
           accept="image/*"
           style={{
             width: 0.1,
@@ -206,42 +238,6 @@ class NegaForm extends Component {
         this.negaFilmsField.value = null;
       }
     );
-  }
-
-  handleNegaTitleChange(e) {
-    let { nega } = this.state;
-    nega.title = e.target.value;
-    this.setState({ nega: nega });
-  }
-
-  handleNegaDescriptionChange(e) {
-    let { nega } = this.state;
-    nega.description = e.target.value;
-    this.setState({ nega: nega });
-  }
-
-  renderNegaTitleInlineError() {
-    if (this.state.nega.errors.title) {
-      return (
-        <div className="inline-error alert alert-danger">
-          {this.state.nega.errors.title.join(', ')}
-        </div>
-      );
-    } else {
-      return null;
-    }
-  }
-
-  renderNegaDescriptionInlineError() {
-    if (this.state.nega.errors.description) {
-      return (
-        <div className="inline-error alert alert-danger">
-          {this.state.nega.errors.description.join(', ')}
-        </div>
-      );
-    } else {
-      return null;
-    }
   }
 
   handleCancel() {

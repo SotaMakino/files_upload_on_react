@@ -28,6 +28,7 @@ class Main extends Component {
               icon='add'
               floating
               accent
+              href='/#/negas/new'
             />
         </div>
       </div>
@@ -38,9 +39,9 @@ class Main extends Component {
   	return this.state.negas.map(nega => {
       return(
         <img
-          src={nega.film_photos[0].url }
-            width={400}
-            height={400}
+          // src={nega.film_photos[0].url }
+          width={400}
+          height={400}
         />
        );
     });
