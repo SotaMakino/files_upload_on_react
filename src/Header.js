@@ -10,7 +10,7 @@ const Header = () =>
       <Link to='/' className='Header-link'>Home</Link>
       <Link to='/negas' className='Header-link'>Negative Films</Link>
     </Navigation>
-    <div>version 0.3</div>
+    <div>version 1.0</div>
   </AppBar>
 
 export default Header;
