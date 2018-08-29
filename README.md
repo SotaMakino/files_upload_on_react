@@ -2,7 +2,7 @@
 
 ![alt text](https://github.com/SotaMakino/negabook-client/blob/master/public/screenshot1.png)
 
-This is a sample app which can upload photo to the main Garalley page.
+This is a sample react app which can upload photo to the main gallery page.
 
 
 Here is the url of this site.
