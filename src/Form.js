@@ -18,10 +18,10 @@ class NegaForm extends Component {
     }
   };
 
+  // for Edit
   componentWillMount() {
     if (this.props.match.params.id) {
       axiosClient.get(`/negas/${this.props.match.params.id}`).then(response => {
-        console.log(response.data);
         this.setState({
           selectedNegaFilmFiles: response.data.film_photos,
           nega: {
