@@ -7,19 +7,18 @@ import './Form.css';
 
 class NegaForm extends Component {
   state = {
-    selectedNegaFilmFiles: [],
-    submitFormProgress: 0,
-    isSubmittingForm: false,
-    didFormSubmissionComplete: false,
-    nega: {
-      id: this.props.match.params.id,
-      title: '',
-      description: '',
-      errors: {}
-    }
-  };
+      selectedNegaFilmFiles: [],
+      nega: {
+        id: this.props.match.params.id,
+        title: '',
+        description: '',
+        errors: {}
+      },
+      isSubmittingForm: false,
+      didFormSubmissionComplete: false
+    };
 
-  // for Edit
+  // for Edit and Update
   componentWillMount() {
     if (this.props.match.params.id) {
       axiosClient.get(`/negas/${this.props.match.params.id}`).then(response => {
@@ -50,7 +49,7 @@ class NegaForm extends Component {
               value={this.state.nega.title}
               className="form-control"
             />
-            {this.renderNegaTitleInlineError()}
+            {this.renderNegaTitleError()}
           </div>
           <div>
             <label>Description</label>
@@ -60,7 +59,7 @@ class NegaForm extends Component {
               value={this.state.nega.description}
               className="form-control"
             />
-            {this.renderNegaDescriptionInlineError()}
+            {this.renderNegaDescriptionError()}
           </div>
           <div className="NegaForm">
             <label>Photo</label>
@@ -68,6 +67,7 @@ class NegaForm extends Component {
             {this.renderSelectedNegaFilmFiles()}
           </div>
           {this.renderUploadingProgress()}
+          {this.renderNegaFilmError()}
           <Button
             raised
             accent
@@ -100,7 +100,7 @@ class NegaForm extends Component {
     this.setState({ nega: nega });
   }
 
-  renderNegaTitleInlineError() {
+  renderNegaTitleError() {
     if (this.state.nega.errors.title) {
       return (
         <div>
@@ -110,11 +110,21 @@ class NegaForm extends Component {
     }
   }
 
-  renderNegaDescriptionInlineError() {
+  renderNegaDescriptionError() {
     if (this.state.nega.errors.description) {
       return (
         <div>
           {this.state.nega.errors.description}
+        </div>
+      );
+    }
+  }
+
+  renderNegaFilmError(){
+    if (this.state.selectedNegaFilmFiles.length == 0){
+      return(
+        <div>
+          Upload a photo!
         </div>
       );
     }
@@ -185,11 +195,7 @@ class NegaForm extends Component {
 
     return (
       <div>
-        <ProgressBar
-          type="circular"
-          min="0"
-          max="100"
-        />
+        <ProgressBar type="circular" />
        </div> 
     );
   }
@@ -199,20 +205,8 @@ class NegaForm extends Component {
     let { selectedNegaFilmFiles } = this.state;
     for (let i = 0; i < selectedFiles.length; i++) {
       selectedNegaFilmFiles.push(selectedFiles.item(i));
-    } //end for
-
-    this.setState(
-      {
-        selectedNegaFilmFiles: selectedNegaFilmFiles
-      },
-      () => {
-        this.negaFilmsField.value = null;
-      }
-    );
-  }
-
-  handleCancel() {
-    this.props.history.push('/negas');
+    }
+    this.setState({selectedNegaFilmFiles: selectedNegaFilmFiles});
   }
 
   buildFormData() {
@@ -246,26 +240,19 @@ class NegaForm extends Component {
       : '/negas.json';
 
     axiosClient
-      [submitMethod](url, this.buildFormData(), {
-        onUploadProgress: progressEvent => {
-          let percentage = progressEvent.loaded * 100.0 / progressEvent.total;
-          this.setState({
-            submitFormProgress: percentage
-          });
-        }
-      })
+      [submitMethod](url, this.buildFormData()
+      )
       .then(response => {
         this.setState({
           didFormSubmissionComplete: true
         });
-        this.props.history.push('/negas');
+        this.props.history.push('/');
       })
       .catch(error => {
         let { nega } = this.state;
         nega.errors = error.response.data;
         this.setState({
           isSubmittingForm: false,
-          submitFormProgress: 0,
           nega: nega
         });
       });
@@ -274,16 +261,24 @@ class NegaForm extends Component {
   handleFormSubmit() {
     let { nega } = this.state;
     nega.errors = {};
-    this.setState(
-      {
-        isSubmittingForm: true,
-        nega: nega
-      },
-      () => {
-        this.submitForm();
-      }
-    );
+
+    if (this.state.selectedNegaFilmFiles.length !== 0){
+      this.setState(
+        {
+          isSubmittingForm: true,
+          nega: nega
+        },
+        () => {
+          this.submitForm();
+        }
+      );
+    }
   }
+
+  handleCancel() {
+    this.props.history.push('/negas');
+  }
+
 }
 
 export default NegaForm;
