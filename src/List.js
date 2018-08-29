@@ -16,7 +16,7 @@ class NegaList extends Component {
 
   render() {
     return (
-      <div className="NegaIndex col-md-12" style={{ marginTop: 30 }}>
+      <div className="col-md-12" style={{ marginTop: 30 }}>
         <div className="clearfix">
           <div className="pull-right">
             <Button
