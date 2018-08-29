@@ -10,3 +10,7 @@ Here is the url of this site.
 
 You can also see the backend source code
 (https://github.com/SotaMakino/negabook-server)
+
+##To-Do
+[] Save images to cloud storage AWS S3 from Heroku Dynos
+[] Convert to TypeScript
