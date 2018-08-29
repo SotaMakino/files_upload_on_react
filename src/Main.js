@@ -10,6 +10,10 @@ class Main extends Component {
   	negas: []
   };
 
+  handleNew(){
+    this.props.history.push('/negas/new');
+  }
+
   componentWillMount() {
     axiosClient.get('/negas.json').then(response => {
       this.setState({ negas: response.data });
@@ -20,16 +24,16 @@ class Main extends Component {
     return (
       <div>
         <Gallery photos={defaultPhotos} />
-        <div>
-        {this.renderAllNegaFilmFiles()}
-        </div>
+          <div>
+          {this.renderAllNegaFilmFiles()}
+          </div>
         <div className='Main-button'>
-            <Button
-              icon='add'
-              floating
-              accent
-              href='/#/negas/new'
-            />
+          <Button
+            icon='add'
+            floating
+            accent
+            onClick={this.handleNew.bind(this)}
+          />
         </div>
       </div>
     );
