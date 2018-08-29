@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axiosClient from './axiosClient';
 import Button from 'react-toolbox/lib/button/Button';
 import Dialog from 'react-toolbox/lib/dialog/Dialog';
+import ProgressBar from 'react-toolbox/lib/progress_bar';
 import './Form.css';
 
 class NegaForm extends Component {
@@ -61,12 +62,12 @@ class NegaForm extends Component {
             />
             {this.renderNegaDescriptionInlineError()}
           </div>
-          <div>
+          <div className="NegaForm">
             <label>Photo</label>
             {this.renderUploadFilmsButton()}
             {this.renderSelectedNegaFilmFiles()}
           </div>
-          {this.renderUploadFormProgress()}
+          {this.renderUploadingProgress()}
           <Button
             raised
             accent
@@ -129,6 +130,7 @@ class NegaForm extends Component {
           disabled={this.state.isSubmittingForm}
           multiple={false}
           accept="image/*"
+          // Hide the button itself
           style={{
             width: 0.1,
             height: 0.1,
@@ -139,7 +141,6 @@ class NegaForm extends Component {
           }}
           id="nega_films"
           onChange={e => this.handleNegaFilmsChange(e)}
-          className="form-control"
         />
         <label
           disabled={this.state.isSubmittingForm}
@@ -155,28 +156,18 @@ class NegaForm extends Component {
 
   renderSelectedNegaFilmFiles() {
     let fileDOMs = this.state.selectedNegaFilmFiles.map((el, index) => {
-      if (el._destroy) {
-        return null;
-      }
-
       return (
-        <li key={index}>
-          <div className="photo">
+        <div key={index}>
+          <div>
             <img
               width={150}
               src={el.id ? el.url : URL.createObjectURL(el)}
-              style={{ alignSelf: 'center' }}
             />
-            <div
-              className="remove"
-              onClick={() => this.removeSelectedNegaFilmFile(el, index)}>
-              <span style={{ top: 2 }} className="glyphicon glyphicon-remove" />
-            </div>
           </div>
-          <div className="file-name">
+          <div>
             {el.name}
           </div>
-        </li>
+        </div>
       );
     });
 
@@ -187,40 +178,20 @@ class NegaForm extends Component {
     );
   }
 
-  renderUploadFormProgress() {
+  renderUploadingProgress() {
     if (this.state.isSubmittingForm === false) {
       return null;
     }
 
     return (
-      <div className="progress">
-        <div
-          className={
-            'progress-bar progress-bar-info progress-bar-striped' +
-            (this.state.submitFormProgress < 100 ? 'active' : '')
-          }
-          role="progressbar"
-          aria-valuenow={this.state.submitFormProgress}
-          areavaluemin="0"
-          areavaluemax="100"
-          style={{ width: this.state.submitFormProgress + '%' }}>
-          {this.state.submitFormProgress}% Complete
-        </div>
-      </div>
+      <div>
+        <ProgressBar
+          type="circular"
+          min="0"
+          max="100"
+        />
+       </div> 
     );
-  }
-
-  removeSelectedNegaFilmFile(film, index) {
-    let { selectedNegaFilmFiles } = this.state;
-    if (film.id) {
-      selectedNegaFilmFiles[index]._destroy = true;
-    } else {
-      selectedNegaFilmFiles.splice(index, 1);
-    }
-
-    this.setState({
-      selectedNegaFilmFiles: selectedNegaFilmFiles
-    });
   }
 
   handleNegaFilmsChange() {
