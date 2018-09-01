@@ -1,6 +1,6 @@
 ## Negabook
 
-![alt text](https://github.com/SotaMakino/negabook-client/blob/master/public/negatech.png)
+![alt text](https://github.com/SotaMakino/negabook-client/blob/master/public/nega_v3.png)
 ![alt text](https://github.com/SotaMakino/negabook-client/blob/master/public/screenShot2.png)
 
 This is a sample react app which can upload photo to the main gallery page.
