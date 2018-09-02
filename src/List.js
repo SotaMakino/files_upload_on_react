@@ -68,7 +68,7 @@ class NegaList extends Component {
         <tr key={nega.id}>
           <td>
           <img
-            src={nega.film_photos[0].url}
+            src={nega.film_photos[0].url.replace(/\/\/negabook-server.herokuapp.com/g, '')}
             width={50}
             height={50}
           />

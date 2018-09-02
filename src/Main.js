@@ -43,7 +43,7 @@ class Main extends Component {
   	return this.state.negas.map(nega => {
       return(
         <img
-          src={nega.film_photos[0].url }
+          src={nega.film_photos[0].url.replace(/\/\/negabook-server.herokuapp.com/g, '')}
           width={400}
           height={400}
         />
