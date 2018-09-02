@@ -11,16 +11,16 @@ You can also see the backend source code: [negabook-server](https://github.com/S
 #### Frontend
 
 - [React](https://reactjs.org/) - A JavaScript library for building user interfaces featured Virtual DOM, Data flow, etc.
-- Create React App - Officially supported way to create single-page React applications. It offers a modern build setup with no configuration.
-- React Toolbox - A set of React components that implement Google's Material Design specification.
-- axios - Promise based HTTP client for the browser and node.js.
+- [Create React App](https://github.com/facebook/create-react-app) - Officially supported way to create single-page React applications. It offers a modern build setup with no configuration.
+- [React Toolbox](http://react-toolbox.io/#/) - A set of React components that implement Google's Material Design specification.
+- [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
 
 #### Backend
 
 - Ruby 2.6
 - Rails 5.2
-- Rack CORS - Rack Middleware for handling Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.
-- PaperClip - Easy file attachment management for ActiveRecord.
+- [Rack CORS](https://github.com/cyu/rack-cors) - Rack Middleware for handling Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.
+- [PaperClip](https://github.com/thoughtbot/paperclip) - Easy file attachment management for ActiveRecord.
 - S3 - AWS Cloud storage for saving photos.
 - Mysql2 for saving Title and Description data.
 
