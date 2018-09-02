@@ -28,6 +28,7 @@ You can also see the backend source code: [negabook-server](https://github.com/S
 
 - CRUD (create / read / update / delete) on posts.
 - Upload photos to S3 and show them all.
+- Deployed Heroku and GitHub Pages.
 
 
 ## To-Do
