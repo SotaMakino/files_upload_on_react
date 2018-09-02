@@ -16,4 +16,4 @@ You can also see the backend source code.
 ## To-Do
 
 - [x]  Save images to cloud storage AWS S3 from Heroku Dynos
-- [ ]  Convert to TypeScript
+- [ ]  Migrating to TypeScript
