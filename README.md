@@ -18,7 +18,7 @@ You can also see the backend source code: [negabook-server](https://github.com/S
 #### Backend
 
 - Ruby 2.6
-- Rails 5.2
+- Rails 5.2 - API Only
 - [Rack CORS](https://github.com/cyu/rack-cors) - Rack Middleware for handling Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.
 - [PaperClip](https://github.com/thoughtbot/paperclip) - Easy file attachment management for ActiveRecord.
 - Amazon S3 - AWS Cloud storage for saving photos.
