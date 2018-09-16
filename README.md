@@ -10,6 +10,7 @@ You can also see the backend source code: [negabook-server](https://github.com/S
 ## Technologies
 #### Frontend
 
+- [TypeScript](https://github.com/Microsoft/TypeScript) - A superset of JavaScript that compiles to clean JavaScript output.
 - [React](https://reactjs.org/) - A JavaScript library for building user interfaces featured Virtual DOM, Data flow, etc.
 - [Create React App](https://github.com/facebook/create-react-app) - Officially supported way to create single-page React applications. It offers a modern build setup with no configuration.
 - [React Toolbox](http://react-toolbox.io/#/) - A set of React components that implement Google's Material Design specification.
@@ -28,11 +29,11 @@ You can also see the backend source code: [negabook-server](https://github.com/S
 
 - CRUD (create / read / update / delete) on posts.
 - Upload photos to S3 and show them all.
-- Styled by React Toolbox and can be used intuitively
+- Styled by React Toolbox and can be used intuitively.
 - Deployed Heroku and GitHub Pages.
 
 
 ## To-Do
 
-- [x]  Save images to cloud storage AWS S3 from Heroku Dynos
-- [ ]  Migrate to TypeScript
+- [x]  Save images to cloud storage AWS S3 from Heroku Dynos.
+- [ ]  Migrate to TypeScript. (Doing)
