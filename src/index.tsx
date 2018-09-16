@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as theme from './toolbox/theme';
 import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
-import theme from './toolbox/theme';
 import App from './App';
 import './index.css';
 
