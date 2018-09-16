@@ -1,6 +1,6 @@
 ## Negabook
 
-![alt text](https://github.com/SotaMakino/negabook-client/blob/master/public/nega_info_v1.pdf)
+![alt text](https://github.com/SotaMakino/negabook-client/blob/master/public/negabook-logo.png)
 ![alt text](https://github.com/SotaMakino/negabook-client/blob/master/public/screenShot2.png)
 
 Here is the url of this site: [Negabook](https://sotamakino.github.io/negabook-client/).
