@@ -39,3 +39,4 @@ yarn-debug.log*
 
 /build
 /scripts
+/config
