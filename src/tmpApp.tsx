@@ -1,17 +1,15 @@
 import * as React from 'react';
 
-class App extends React.Component {
-  public render() {
+interface Props {
+  name: string;
+}
+class App extends React.Component<Props> {
+  render() {
     return (
       <div>
-        <header>
-          <h1>Welcome to Typescript</h1>
-        </header>
-        <p>
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        {this.props.name}さん。こんにちは。
       </div>
-    );
+    )
   }
 }
 
