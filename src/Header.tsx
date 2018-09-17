@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 import Navigation from 'react-toolbox/lib/navigation/Navigation';
 import { Link } from 'react-router-dom';
