@@ -1,5 +1,5 @@
-let axios = require('axios');
-let axiosClient = axios.create({
+const axios = require('axios');
+const axiosClient = axios.create({
   baseURL: 'https://negabook-server.herokuapp.com'
 });
 
