@@ -6,8 +6,7 @@ import NegaEdit from './Edit';
 import Main from './Main';
 import Header from './Header';
 
-class App extends React.Component<{}, {}> {
-
+class App extends React.Component {
   public render() {
     return (
       <Router basename={process.env.PUBLIC_URL}>
