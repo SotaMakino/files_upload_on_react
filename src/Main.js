@@ -4,7 +4,7 @@ import Gallery from "react-photo-gallery";
 import Button from 'react-toolbox/lib/button/Button';
 import './Main.css';
 
-class Main extends Component {
+export default class Main extends Component {
 
   state = { 
   	negas: []
@@ -99,5 +99,3 @@ const defaultPhotos = [
     height: 3
   }
 ];
-
-export default Main;

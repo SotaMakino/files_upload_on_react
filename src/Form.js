@@ -5,7 +5,7 @@ import Dialog from 'react-toolbox/lib/dialog/Dialog';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 import './Form.css';
 
-class NegaForm extends Component {
+export default class NegaForm extends Component {
   state = {
       selectedNegaFilmFiles: [],
       nega: {
@@ -280,5 +280,3 @@ class NegaForm extends Component {
   }
 
 }
-
-export default NegaForm;

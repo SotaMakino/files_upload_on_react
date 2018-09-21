@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NegaForm from './Form';
 
-class NegaEdit extends Component {
+export default class NegaEdit extends Component {
   render() {
     return (
       <div>
@@ -11,5 +11,3 @@ class NegaEdit extends Component {
     );
   }
 }
-
-export default NegaEdit;
