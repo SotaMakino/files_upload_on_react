@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axiosClient from './axiosClient';
 import Button from 'react-toolbox/lib/button/Button';
 
-class NegaList extends Component {
+export default class NegaList extends Component {
   constructor(props) {
     super(props);
     this.state = { negas: [] };
@@ -100,7 +100,4 @@ class NegaList extends Component {
     });
   }
 
-
 }
-
-export default NegaList;

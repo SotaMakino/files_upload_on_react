@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NegaForm from './Form';
 
-class NegaNew extends Component {
+export default class NegaNew extends Component {
   render() {
     return (
       <div className="NegaNew col-md-8 col-md-offset-2">
@@ -11,5 +11,3 @@ class NegaNew extends Component {
     );
   }
 }
-
-export default NegaNew;

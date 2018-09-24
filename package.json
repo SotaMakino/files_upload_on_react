@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://sotamakino.github.io/negabook-client",
   "dependencies": {
+    "@types/history": "^4.7.0",
     "@types/react-router-dom": "^4.3.1",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
