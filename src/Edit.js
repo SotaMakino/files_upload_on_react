@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import NegaForm from './Form';
 
-export default class NegaEdit extends Component {
+export default class NegaEdit extends React.Component {
   render() {
     return (
       <div>

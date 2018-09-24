@@ -1,11 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axiosClient from './axiosClient';
 import Button from 'react-toolbox/lib/button/Button';
 import Dialog from 'react-toolbox/lib/dialog/Dialog';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 import './Form.css';
 
-export default class NegaForm extends Component {
+// interface IState {
+//   selectedNegaFilmFiles: [],
+//       nega: {
+//         id: number,
+//         title: string,
+//         description: string,
+//         errors: string
+//       },
+//       isSubmittingForm: boolean,
+//       didFormSubmissionComplete: boolean
+// }
+
+export default class NegaForm extends React.Component {
   state = {
       selectedNegaFilmFiles: [],
       nega: {
