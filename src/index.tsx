@@ -6,13 +6,14 @@ import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
 import createBrowserHistory from 'history/createBrowserHistory';
 import App from './App';
 import './index.css';
+// import Apple from './apple';
 
-const history = createBrowserHistory()
+const history = createBrowserHistory();
 
 ReactDOM.render(
 		<ThemeProvider theme={theme}>
 			<Router history={history}>
-				<App />
+				<App/>
 			</Router>
 		</ThemeProvider>,
 	document.getElementById('root') as HTMLElement

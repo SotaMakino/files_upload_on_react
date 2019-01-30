@@ -1,28 +1,40 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import axiosClient from './axiosClient';
 import Button from 'react-toolbox/lib/button/Button';
+import { History } from 'history';
 
-export default class NegaList extends Component {
-  constructor(props) {
+interface IProps {
+  history: History;
+  match: any;
+}
+
+interface IState {
+  negas: any[];
+}
+
+export default class NegaList extends React.Component <IProps, IState> {
+
+  constructor(props: any) {
     super(props);
     this.state = { negas: [] };
   }
 
-  componentWillMount() {
-    axiosClient.get('/negas.json').then(response => {
+  componentDidMount() {
+    axiosClient.get('/negas.json').then((response: any) => {
       this.setState({ negas: response.data });
     });
   }
 
-  render() {
+  public render() {
+    console.log(this.props);
     return (
-      <div className="col-md-12" style={{ marginTop: 30 }}>
-        <div className="clearfix">
+      <div style={{ marginTop: 30 }}>
+        <div>
           <div className="pull-right">
             <Button
               primary
               icon='add'
-              onClick={e => this.handleNewNega()}
+              onClick={(e: any) => this.handleNewNega()}
               className="btn btn-success">
               New Nega
             </Button>
@@ -45,25 +57,25 @@ export default class NegaList extends Component {
     );
   }
 
-  handleNewNega() {
+  private handleNewNega() {
     this.props.history.push('/negas/new');
   }
 
-  handleEdit(negaId) {
+  private handleEdit(negaId: number) {
     this.props.history.push(`/negas/${negaId}/edit`);
   }
 
-  handleRemove(negaId) {
+  private handleRemove(negaId: number) {
     let negas = this.state.negas;
-    negas = negas.filter(nega => {
+    negas = negas.filter((nega: any) => {
       return nega.id !== negaId;
     });
     this.setState({ negas: negas });
     axiosClient.delete(`/negas/${negaId}`);
   }
 
-  renderTableBody() {
-    return this.state.negas.map(nega => {
+  private renderTableBody() {
+    return this.state.negas.map((nega: any) => {
       return (
         <tr key={nega.id}>
           <td>
@@ -85,13 +97,13 @@ export default class NegaList extends Component {
           <td>
             <Button
               icon='edit'
-              onClick={e => this.handleEdit(nega.id)}
+              onClick={(e: any) => this.handleEdit(nega.id)} //questionable change
             >
             </Button>
             &nbsp;
             <Button
               icon='delete'
-              onClick={e => this.handleRemove(nega.id)}
+              onClick={(e: any) => this.handleRemove(nega.id)} //questionable change
             >
             </Button>
           </td>
