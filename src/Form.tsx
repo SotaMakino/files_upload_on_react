@@ -1,24 +1,30 @@
-import React from 'react';
+import * as React from 'react';
 import axiosClient from './axiosClient';
 import Button from 'react-toolbox/lib/button/Button';
 import Dialog from 'react-toolbox/lib/dialog/Dialog';
 import ProgressBar from 'react-toolbox/lib/progress_bar';
 import './Form.css';
+import { History } from 'history';
 
-// interface IState {
-//   selectedNegaFilmFiles: [],
-//       nega: {
-//         id: number,
-//         title: string,
-//         description: string,
-//         errors: string
-//       },
-//       isSubmittingForm: boolean,
-//       didFormSubmissionComplete: boolean
-// }
+interface IProps {
+  history: History;
+  match: any;
+}
 
-export default class NegaForm extends React.Component {
-  state = {
+interface IState {
+  selectedNegaFilmFiles?: any,
+      nega: {
+        id: number,
+        title: string,
+        description: string,
+        errors?: any,
+      },
+      isSubmittingForm: boolean,
+      didFormSubmissionComplete: boolean,
+}
+
+export default class NegaForm extends React.Component <IProps, IState> {
+   state: Readonly<IState> = {
       selectedNegaFilmFiles: [],
       nega: {
         id: this.props.match.params.id,
@@ -31,7 +37,7 @@ export default class NegaForm extends React.Component {
     };
 
   // for Edit and Update
-  componentWillMount() {
+   componentDidMount() {
     if (this.props.match.params.id) {
       axiosClient.get(`/negas/${this.props.match.params.id}`).then(response => {
         this.setState({
@@ -47,7 +53,8 @@ export default class NegaForm extends React.Component {
     }
   }
 
-  render() {
+  public render() {
+    console.log(this.props);
     return (
         <Dialog
           title='New Nega'
@@ -100,19 +107,19 @@ export default class NegaForm extends React.Component {
     );
   }
 
-  handleNegaTitleChange(e) {
+  public handleNegaTitleChange(e: any) {
     let { nega } = this.state;
     nega.title = e.target.value;
     this.setState({ nega: nega });
   }
 
-  handleNegaDescriptionChange(e) {
+  handleNegaDescriptionChange(e: any) {
     let { nega } = this.state;
     nega.description = e.target.value;
     this.setState({ nega: nega });
   }
 
-  renderNegaTitleError() {
+  renderNegaTitleError():any {
     if (this.state.nega.errors.title) {
       return (
         <div>

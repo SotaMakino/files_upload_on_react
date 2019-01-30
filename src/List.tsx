@@ -1,23 +1,31 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import axiosClient from './axiosClient';
 import Button from 'react-toolbox/lib/button/Button';
+import { History } from 'history';
 
-export default class NegaList extends Component {
-  constructor(props) {
+interface IProps {
+  history: History;
+  match: any;
+}
+
+export default class NegaList extends React.Component <IProps> {
+
+  constructor(props: any) {
     super(props);
     this.state = { negas: [] };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     axiosClient.get('/negas.json').then(response => {
       this.setState({ negas: response.data });
     });
   }
 
-  render() {
+  public render() {
+    console.log(this.props);
     return (
-      <div className="col-md-12" style={{ marginTop: 30 }}>
-        <div className="clearfix">
+      <div style={{ marginTop: 30 }}>
+        <div>
           <div className="pull-right">
             <Button
               primary
