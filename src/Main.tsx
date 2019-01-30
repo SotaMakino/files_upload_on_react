@@ -19,7 +19,7 @@ export default class Main extends React.Component <IProps, IState> {
     negas: []
   };
 
-  handleNew(){
+  private handleNew(){
     this.props.history.push('/negas/new');
   }
 
@@ -47,7 +47,7 @@ export default class Main extends React.Component <IProps, IState> {
     );
   }
 
-  renderAllNegaFilmFiles() {
+  private renderAllNegaFilmFiles() {
   	return this.state.negas.map((nega: any) => {
       return(
         <img

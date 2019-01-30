@@ -8,7 +8,11 @@ interface IProps {
   match: any;
 }
 
-export default class NegaList extends React.Component <IProps> {
+interface IState {
+  negas: any[];
+}
+
+export default class NegaList extends React.Component <IProps, IState> {
 
   constructor(props: any) {
     super(props);
@@ -30,7 +34,7 @@ export default class NegaList extends React.Component <IProps> {
             <Button
               primary
               icon='add'
-              onClick={e => this.handleNewNega()}
+              onClick={(e: any) => this.handleNewNega()}
               className="btn btn-success">
               New Nega
             </Button>
@@ -53,15 +57,15 @@ export default class NegaList extends React.Component <IProps> {
     );
   }
 
-  handleNewNega() {
+  private handleNewNega() {
     this.props.history.push('/negas/new');
   }
 
-  handleEdit(negaId: number) {
+  private handleEdit(negaId: number) {
     this.props.history.push(`/negas/${negaId}/edit`);
   }
 
-  handleRemove(negaId: number) {
+  private handleRemove(negaId: number) {
     let negas = this.state.negas;
     negas = negas.filter((nega: any) => {
       return nega.id !== negaId;
@@ -70,7 +74,7 @@ export default class NegaList extends React.Component <IProps> {
     axiosClient.delete(`/negas/${negaId}`);
   }
 
-  renderTableBody() {
+  private renderTableBody() {
     return this.state.negas.map((nega: any) => {
       return (
         <tr key={nega.id}>
