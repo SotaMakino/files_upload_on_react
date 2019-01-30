@@ -16,7 +16,7 @@ export default class NegaList extends React.Component <IProps> {
   }
 
   componentDidMount() {
-    axiosClient.get('/negas.json').then(response => {
+    axiosClient.get('/negas.json').then((response: any) => {
       this.setState({ negas: response.data });
     });
   }
@@ -57,13 +57,13 @@ export default class NegaList extends React.Component <IProps> {
     this.props.history.push('/negas/new');
   }
 
-  handleEdit(negaId) {
+  handleEdit(negaId: number) {
     this.props.history.push(`/negas/${negaId}/edit`);
   }
 
-  handleRemove(negaId) {
+  handleRemove(negaId: number) {
     let negas = this.state.negas;
-    negas = negas.filter(nega => {
+    negas = negas.filter((nega: any) => {
       return nega.id !== negaId;
     });
     this.setState({ negas: negas });
@@ -71,7 +71,7 @@ export default class NegaList extends React.Component <IProps> {
   }
 
   renderTableBody() {
-    return this.state.negas.map(nega => {
+    return this.state.negas.map((nega: any) => {
       return (
         <tr key={nega.id}>
           <td>
@@ -93,13 +93,13 @@ export default class NegaList extends React.Component <IProps> {
           <td>
             <Button
               icon='edit'
-              onClick={e => this.handleEdit(nega.id)}
+              onClick={(e: any) => this.handleEdit(nega.id)} //questionable change
             >
             </Button>
             &nbsp;
             <Button
               icon='delete'
-              onClick={e => this.handleRemove(nega.id)}
+              onClick={(e: any) => this.handleRemove(nega.id)} //questionable change
             >
             </Button>
           </td>

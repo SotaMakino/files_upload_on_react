@@ -9,9 +9,13 @@ interface IProps {
   match: any;
 }
 
-export default class Main extends React.Component <IProps> {
+interface IState {
+  negas: any;
+}
 
-  state = { 
+export default class Main extends React.Component <IProps, IState> {
+
+  state: Readonly<IState> = { 
     negas: []
   };
 
@@ -20,7 +24,7 @@ export default class Main extends React.Component <IProps> {
   }
 
   componentDidMount() {
-    axiosClient.get('/negas.json').then(response => {
+    axiosClient.get('/negas.json').then((response: any) => {
       this.setState({ negas: response.data });
     });
   }
@@ -44,7 +48,7 @@ export default class Main extends React.Component <IProps> {
   }
 
   renderAllNegaFilmFiles() {
-  	return this.state.negas.map(nega => {
+  	return this.state.negas.map((nega: any) => {
       return(
         <img
           src={nega.film_photos[0].url.replace(/\/\/negabook-server.herokuapp.com/g, '')}

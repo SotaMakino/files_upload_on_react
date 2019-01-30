@@ -19,8 +19,8 @@ interface IState {
         description: string,
         errors?: any,
       },
-      isSubmittingForm: boolean,
-      didFormSubmissionComplete: boolean,
+  isSubmittingForm: boolean,
+  didFormSubmissionComplete: boolean,
 }
 
 export default class NegaForm extends React.Component <IProps, IState> {
@@ -39,7 +39,7 @@ export default class NegaForm extends React.Component <IProps, IState> {
   // for Edit and Update
    componentDidMount() {
     if (this.props.match.params.id) {
-      axiosClient.get(`/negas/${this.props.match.params.id}`).then(response => {
+      axiosClient.get(`/negas/${this.props.match.params.id}`).then((response: any) => {
         this.setState({
           selectedNegaFilmFiles: response.data.film_photos,
           nega: {
@@ -91,14 +91,14 @@ export default class NegaForm extends React.Component <IProps, IState> {
             raised
             accent
             disabled={this.state.isSubmittingForm}
-            onClick={e => this.handleFormSubmit()}
+            onClick={(e: any) => this.handleFormSubmit()} //questionable change
             className="btn btn-primary">
             {this.state.isSubmittingForm ? 'Saving...' : 'Save'}
           </Button>
           &nbsp;
           <Button
             disabled={this.state.isSubmittingForm}
-            onClick={e => this.handleCancel()}
+            onClick={(e: any) => this.handleCancel()} //questionable change
             className="btn btn-default">
             Cancel
           </Button>
@@ -169,7 +169,7 @@ export default class NegaForm extends React.Component <IProps, IState> {
             zIndex: -1
           }}
           id="nega_films"
-          onChange={e => this.handleNegaFilmsChange(e)}
+          onChange={(e => this.handleNegaFilmsChange(e)}
         />
         <label
           disabled={this.state.isSubmittingForm}
@@ -184,7 +184,7 @@ export default class NegaForm extends React.Component <IProps, IState> {
   }
 
   renderSelectedNegaFilmFiles() {
-    let fileDOMs = this.state.selectedNegaFilmFiles.map((el, index) => {
+    let fileDOMs = this.state.selectedNegaFilmFiles.map((el: any, index: any) => {
       return (
         <div key={index}>
           <div>
@@ -261,13 +261,13 @@ export default class NegaForm extends React.Component <IProps, IState> {
     axiosClient
       [submitMethod](url, this.buildFormData()
       )
-      .then(response => {
+      .then((response: any) => {
         this.setState({
           didFormSubmissionComplete: true
         });
         this.props.history.push('/');
       })
-      .catch(error => {
+      .catch((error: any) => {
         let { nega } = this.state;
         nega.errors = error.response.data;
         this.setState({
