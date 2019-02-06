@@ -34,4 +34,5 @@ You can also see the backend source code: [negabook-server](https://github.com/S
 ## To-Do
 
 - [x]  Save images to cloud storage AWS S3 from Heroku Dynos.
-- [ ]  Migrate to TypeScript. (Doing)
+- [x]  Migrate to TypeScript.
+- []   Save images to Heroku Dynos from S3 when the free trial of AWS is over...
