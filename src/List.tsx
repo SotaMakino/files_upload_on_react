@@ -28,7 +28,7 @@ export default class NegaList extends React.Component <IProps, IState> {
   public render() {
     console.log(this.props);
     return (
-      <div style={{ marginTop: 30 }}>
+      <div style={{ marginTop: 30, marginLeft: 100 }}>
         <div>
           <div className="pull-right">
             <Button
@@ -81,8 +81,8 @@ export default class NegaList extends React.Component <IProps, IState> {
           <td>
           <img
             src={nega.film_photos[0].url.replace(/\/\/negabook-server.herokuapp.com/g, '')}
-            width={50}
-            height={50}
+            width={100}
+            height={100}
           />
           </td>
           <td>

@@ -52,8 +52,8 @@ export default class Main extends React.Component <IProps, IState> {
       return(
         <img
           src={nega.film_photos[0].url.replace(/\/\/negabook-server.herokuapp.com/g, '')}
-          width={400}
-          height={400}
+          width={288}
+          height={350}
         />
        );
     });

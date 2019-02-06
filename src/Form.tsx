@@ -12,28 +12,31 @@ interface IProps {
 }
 
 interface IState {
-  selectedNegaFilmFiles?: any,
+  selectedNegaFilmFiles: any,
       nega: {
         id: number,
         title: string,
         description: string,
-        errors?: any,
+        errors: any,
       },
   isSubmittingForm: boolean,
   didFormSubmissionComplete: boolean,
+  negaFilmsField: any
 }
 
 export default class NegaForm extends React.Component <IProps, IState> {
-   state: Readonly<IState> = {
+
+   public state: IState = {
       selectedNegaFilmFiles: [],
-      nega: {
-        id: this.props.match.params.id,
-        title: '',
-        description: '',
-        errors: {}
-      },
+        nega: {
+          id: this.props.match.params.id,
+          title: '',
+          description: '',
+          errors: {}
+        },
       isSubmittingForm: false,
-      didFormSubmissionComplete: false
+      didFormSubmissionComplete: false,
+      negaFilmsField: []
     };
 
   // for Edit and Update
@@ -54,7 +57,7 @@ export default class NegaForm extends React.Component <IProps, IState> {
   }
 
   public render() {
-    console.log(this.props);
+    console.log(this.state);
     return (
         <Dialog
           title='New Nega'
@@ -78,7 +81,7 @@ export default class NegaForm extends React.Component <IProps, IState> {
               value={this.state.nega.description}
               className="form-control"
             />
-            {/* {this.renderNegaDescriptionError()} */}
+            {this.renderNegaDescriptionError()}
           </div>
           <div className="NegaForm">
             <label>Photo</label>
@@ -86,7 +89,7 @@ export default class NegaForm extends React.Component <IProps, IState> {
             {this.renderSelectedNegaFilmFiles()}
           </div>
           {this.renderUploadingProgress()}
-          {/* {this.renderNegaFilmError()} */}
+          {this.renderNegaFilmError()}
           <Button
             raised
             accent
@@ -107,15 +110,15 @@ export default class NegaForm extends React.Component <IProps, IState> {
     );
   }
 
-  private handleNegaTitleChange(e: any) {
+  private handleNegaTitleChange(e: React.FormEvent<HTMLInputElement>) {
     let { nega } = this.state;
-    nega.title = e.target.value;
+    nega.title = e.currentTarget.value;
     this.setState({ nega: nega });
   }
 
-  private handleNegaDescriptionChange(e: any) {
+  private handleNegaDescriptionChange(e: React.FormEvent<HTMLInputElement>) {
     let { nega } = this.state;
-    nega.description = e.target.value;
+    nega.description = e.currentTarget.value;
     this.setState({ nega: nega });
   }
 
@@ -129,32 +132,32 @@ export default class NegaForm extends React.Component <IProps, IState> {
     }
   }
 
-  // private renderNegaDescriptionError() {
-  //   if (this.state.nega.errors.description) {
-  //     return (
-  //       <div>
-  //         {this.state.nega.errors.description}
-  //       </div>
-  //     );
-  //   }
-  // }
+  private renderNegaDescriptionError():any {
+    if (this.state.nega.errors.description) {
+      return (
+        <div>
+          {this.state.nega.errors.description}
+        </div>
+      );
+    }
+  }
 
-  // private renderNegaFilmError(){
-  //   if (this.state.selectedNegaFilmFiles.length == 0){
-  //     return(
-  //       <div>
-  //         Upload a photo!
-  //       </div>
-  //     );
-  //   }
-  // }
+  private renderNegaFilmError():any {
+    if (this.state.selectedNegaFilmFiles.length == 0){
+      return(
+        <div>
+          Upload a photo!
+        </div>
+      );
+    }
+  }
 
   private renderUploadFilmsButton() {
     return (
       <div>
-        {/* <input
+        <input
           name="films[]"
-          ref={field => (this.negaFilmsField = field)}
+          ref={field => (this.state.negaFilmsField = field)}
           type="file"
           disabled={this.state.isSubmittingForm}
           multiple={false}
@@ -169,10 +172,9 @@ export default class NegaForm extends React.Component <IProps, IState> {
             zIndex: -1
           }}
           id="nega_films"
-          onChange={(e => this.handleNegaFilmsChange(e))}
-        /> */}
+          onChange={(e => this.handleNegaFilmsChange())}
+        />
         <label
-          // disabled={this.state.isSubmittingForm} //temporary disabled
           className="btn btn-success"
           htmlFor="nega_films">
           <span className="glyphicon glyphicon-cloud-upload" />
@@ -211,22 +213,21 @@ export default class NegaForm extends React.Component <IProps, IState> {
     if (this.state.isSubmittingForm === false) {
       return null;
     }
-
     return (
       <div>
         <ProgressBar type="circular" />
-       </div> 
+      </div> 
     );
   }
 
-  // handleNegaFilmsChange() {
-  //   let selectedFiles = this.negaFilmsField.files;
-  //   let { selectedNegaFilmFiles } = this.state;
-  //   for (let i = 0; i < selectedFiles.length; i++) {
-  //     selectedNegaFilmFiles.push(selectedFiles.item(i));
-  //   }
-  //   this.setState({selectedNegaFilmFiles: selectedNegaFilmFiles});
-  // }
+  handleNegaFilmsChange() {
+    let selectedFiles = this.state.negaFilmsField.files;
+    let { selectedNegaFilmFiles } = this.state;
+    for (let i = 0; i < selectedFiles.length; i++) {
+      selectedNegaFilmFiles.push(selectedFiles.item(i));
+    }
+    this.setState({selectedNegaFilmFiles: selectedNegaFilmFiles});
+  }
 
   buildFormData() {
     let formData = new FormData();
@@ -293,7 +294,7 @@ export default class NegaForm extends React.Component <IProps, IState> {
       );
     }
   }
-
+  
   handleCancel() {
     this.props.history.push('/negas');
   }
