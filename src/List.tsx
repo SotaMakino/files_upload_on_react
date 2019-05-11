@@ -1,7 +1,7 @@
-import * as React from 'react';
-import axiosClient from './axiosClient';
-import Button from 'react-toolbox/lib/button/Button';
-import { History } from 'history';
+import * as React from "react";
+import axiosClient from "./axiosClient";
+import Button from "react-toolbox/lib/button/Button";
+import { History } from "history";
 
 interface IProps {
   history: History;
@@ -12,30 +12,26 @@ interface IState {
   negas: any[];
 }
 
-export default class NegaList extends React.Component <IProps, IState> {
-
-  constructor(props: any) {
-    super(props);
-    this.state = { negas: [] };
-  }
+export default class NegaList extends React.Component<IProps, IState> {
+  state = { negas: [] };
 
   componentDidMount() {
-    axiosClient.get('/negas.json').then((response: any) => {
+    axiosClient.get("/negas.json").then((response: any) => {
       this.setState({ negas: response.data });
     });
   }
 
   public render() {
-    console.log(this.props);
     return (
       <div style={{ marginTop: 30, marginLeft: 100 }}>
         <div>
           <div className="pull-right">
             <Button
               primary
-              icon='add'
+              icon="add"
               onClick={(e: any) => this.handleNewNega()}
-              className="btn btn-success">
+              className="btn btn-success"
+            >
               New Nega
             </Button>
           </div>
@@ -49,16 +45,14 @@ export default class NegaList extends React.Component <IProps, IState> {
               <th>Description</th>
             </tr>
           </thead>
-          <tbody>
-            {this.renderTableBody()}
-          </tbody>
+          <tbody>{this.renderTableBody()}</tbody>
         </table>
       </div>
     );
   }
 
   private handleNewNega() {
-    this.props.history.push('/negas/new');
+    this.props.history.push("/negas/new");
   }
 
   private handleEdit(negaId: number) {
@@ -79,37 +73,31 @@ export default class NegaList extends React.Component <IProps, IState> {
       return (
         <tr key={nega.id}>
           <td>
-          <img
-            src={nega.film_photos[0].url.replace(/\/\/negabook-server.herokuapp.com/g, '')}
-            width={100}
-            height={100}
-          />
+            <img
+              src={nega.film_photos[0].url.replace(
+                /\/\/negabook-server.herokuapp.com/g,
+                ""
+              )}
+              width={100}
+              height={100}
+            />
           </td>
-          <td>
-            {nega.id}
-          </td>
-          <td>
-            {nega.title}
-          </td>
-          <td>
-            {nega.description}
-          </td>
+          <td>{nega.id}</td>
+          <td>{nega.title}</td>
+          <td>{nega.description}</td>
           <td>
             <Button
-              icon='edit'
+              icon="edit"
               onClick={(e: any) => this.handleEdit(nega.id)} //questionable change
-            >
-            </Button>
+            />
             &nbsp;
             <Button
-              icon='delete'
+              icon="delete"
               onClick={(e: any) => this.handleRemove(nega.id)} //questionable change
-            >
-            </Button>
+            />
           </td>
         </tr>
       );
     });
   }
-
 }
