@@ -13,7 +13,7 @@ interface IState {
 }
 
 export default class NegaList extends React.Component<IProps, IState> {
-  state = { negas: [] };
+  public state = { negas: [] };
 
   public componentDidMount() {
     axiosClient.get("/negas.json").then((response: any) => {

@@ -4,11 +4,13 @@
   "private": true,
   "homepage": "https://sotamakino.github.io/negabook-client",
   "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.11",
     "@reach/router": "^1.2.1",
     "@types/history": "^4.7.2",
     "@types/react-router-dom": "^4.3.3",
     "autoprefixer": "7.1.6",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "babel-jest": "^22.1.0",
     "babel-loader": "^7.1.5",
     "babel-preset-react-app": "^3.1.1",
@@ -17,6 +19,7 @@
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
+    "emotion": "^10.0.9",
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "0.11.2",
     "fork-ts-checker-webpack-plugin": "^0.2.8",
@@ -42,7 +45,7 @@
     "ts-jest": "22.0.1",
     "ts-loader": "^2.3.7",
     "tsconfig-paths-webpack-plugin": "^2.0.0",
-    "tslint": "^5.16.0",
+    "tslint": "^5.17.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^3.2.0",
     "uglifyjs-webpack-plugin": "^1.1.8",
@@ -56,16 +59,17 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "deploy": "npm run build && gh-pages -d build",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "lint": "tslint --project ."
   },
   "devDependencies": {
     "@types/jest": "^23.3.14",
-    "@types/node": "^10.14.6",
-    "@types/react": "^16.8.17",
+    "@types/node": "^10.14.8",
+    "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
     "gh-pages": "^1.2.0",
     "react-toolbox-themr": "^1.0.2",
-    "typescript": "^3.4.5"
+    "typescript": "^3.5.1"
   },
   "jest": {
     "collectCoverageFrom": [

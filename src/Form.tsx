@@ -111,13 +111,13 @@ export default class NegaForm extends React.Component<IProps, IState> {
   }
 
   private handleNegaTitleChange(e: React.FormEvent<HTMLInputElement>) {
-    let { nega } = this.state;
+    const { nega } = this.state;
     nega.title = e.currentTarget.value;
     this.setState({ nega: nega });
   }
 
   private handleNegaDescriptionChange(e: React.FormEvent<HTMLInputElement>) {
-    let { nega } = this.state;
+    const { nega } = this.state;
     nega.description = e.currentTarget.value;
     this.setState({ nega: nega });
   }
@@ -171,7 +171,7 @@ export default class NegaForm extends React.Component<IProps, IState> {
   }
 
   private renderSelectedNegaFilmFiles() {
-    let fileDOMs = this.state.selectedNegaFilmFiles.map(
+    const fileDOMs = this.state.selectedNegaFilmFiles.map(
       (el: any, index: any) => {
         return (
           <div key={index}>
@@ -199,8 +199,8 @@ export default class NegaForm extends React.Component<IProps, IState> {
   }
 
   private handleNegaFilmsChange() {
-    let selectedFiles = this.state.negaFilmsField.files;
-    let { selectedNegaFilmFiles } = this.state;
+    const selectedFiles = this.state.negaFilmsField.files;
+    const { selectedNegaFilmFiles } = this.state;
     for (let i = 0; i < selectedFiles.length; i++) {
       selectedNegaFilmFiles.push(selectedFiles.item(i));
     }
@@ -228,8 +228,8 @@ export default class NegaForm extends React.Component<IProps, IState> {
   }
 
   private submitForm() {
-    let submitMethod = this.state.nega.id ? "patch" : "post";
-    let url = this.state.nega.id
+    const submitMethod = this.state.nega.id ? "patch" : "post";
+    const url = this.state.nega.id
       ? `/negas/${this.state.nega.id}.json`
       : "/negas.json";
 
@@ -241,7 +241,7 @@ export default class NegaForm extends React.Component<IProps, IState> {
         this.props.history.push("/");
       })
       .catch((error: any) => {
-        let { nega } = this.state;
+        const { nega } = this.state;
         nega.errors = error.response.data;
         this.setState({
           isSubmittingForm: false,
@@ -251,7 +251,7 @@ export default class NegaForm extends React.Component<IProps, IState> {
   }
 
   private handleFormSubmit() {
-    let { nega } = this.state;
+    const { nega } = this.state;
     nega.errors = {};
 
     if (this.state.selectedNegaFilmFiles.length !== 0) {

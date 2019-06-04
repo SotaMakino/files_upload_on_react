@@ -15,7 +15,7 @@ interface IState {
 }
 
 export default class Main extends React.Component<IProps, IState> {
-  state: Readonly<IState> = {
+  public state: Readonly<IState> = {
     negas: []
   };
 
