@@ -15,7 +15,7 @@ interface IState {
 export default class NegaList extends React.Component<IProps, IState> {
   state = { negas: [] };
 
-  componentDidMount() {
+  public componentDidMount() {
     axiosClient.get("/negas.json").then((response: any) => {
       this.setState({ negas: response.data });
     });
@@ -51,15 +51,15 @@ export default class NegaList extends React.Component<IProps, IState> {
     );
   }
 
-  private handleNewNega() {
+  public handleNewNega() {
     this.props.history.push("/negas/new");
   }
 
-  private handleEdit(negaId: number) {
+  public handleEdit(negaId: number) {
     this.props.history.push(`/negas/${negaId}/edit`);
   }
 
-  private handleRemove(negaId: number) {
+  public handleRemove(negaId: number) {
     let negas = this.state.negas;
     negas = negas.filter((nega: any) => {
       return nega.id !== negaId;
@@ -68,7 +68,7 @@ export default class NegaList extends React.Component<IProps, IState> {
     axiosClient.delete(`/negas/${negaId}`);
   }
 
-  private renderTableBody() {
+  public renderTableBody() {
     return this.state.negas.map((nega: any) => {
       return (
         <tr key={nega.id}>

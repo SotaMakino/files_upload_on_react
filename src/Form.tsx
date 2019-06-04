@@ -39,7 +39,7 @@ export default class NegaForm extends React.Component<IProps, IState> {
   };
 
   // for Edit and Update
-  componentDidMount() {
+  public componentDidMount() {
     if (this.props.match.params.id) {
       axiosClient
         .get(`/negas/${this.props.match.params.id}`)
@@ -187,7 +187,7 @@ export default class NegaForm extends React.Component<IProps, IState> {
     return <ul className="selected-films">{fileDOMs}</ul>;
   }
 
-  renderUploadingProgress() {
+  private renderUploadingProgress() {
     if (this.state.isSubmittingForm === false) {
       return null;
     }
@@ -198,7 +198,7 @@ export default class NegaForm extends React.Component<IProps, IState> {
     );
   }
 
-  handleNegaFilmsChange() {
+  private handleNegaFilmsChange() {
     let selectedFiles = this.state.negaFilmsField.files;
     let { selectedNegaFilmFiles } = this.state;
     for (let i = 0; i < selectedFiles.length; i++) {
@@ -207,7 +207,7 @@ export default class NegaForm extends React.Component<IProps, IState> {
     this.setState({ selectedNegaFilmFiles: selectedNegaFilmFiles });
   }
 
-  buildFormData() {
+  private buildFormData() {
     let formData = new FormData();
     formData.append("nega[title]", this.state.nega.title);
     formData.append("nega[description]", this.state.nega.description);
@@ -227,7 +227,7 @@ export default class NegaForm extends React.Component<IProps, IState> {
     return formData;
   }
 
-  submitForm() {
+  private submitForm() {
     let submitMethod = this.state.nega.id ? "patch" : "post";
     let url = this.state.nega.id
       ? `/negas/${this.state.nega.id}.json`
@@ -250,7 +250,7 @@ export default class NegaForm extends React.Component<IProps, IState> {
       });
   }
 
-  handleFormSubmit() {
+  private handleFormSubmit() {
     let { nega } = this.state;
     nega.errors = {};
 
@@ -267,7 +267,7 @@ export default class NegaForm extends React.Component<IProps, IState> {
     }
   }
 
-  handleCancel() {
+  private handleCancel() {
     this.props.history.push("/negas");
   }
 }

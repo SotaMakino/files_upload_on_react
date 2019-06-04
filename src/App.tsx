@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Switch, HashRouter as Router, Route } from "react-router-dom";
 import NegaList from "./List";
-import NegaNew from "./New";
 import NegaEdit from "./Edit";
 import Main from "./Main";
 import Header from "./Header";
 import Details from "./Details";
+import NegaNew from "./New";
 
 export default class App extends React.Component {
   public render() {
@@ -15,7 +15,7 @@ export default class App extends React.Component {
           <Header />
           <Switch>
             <Route path="/negas/:id/edit" component={NegaEdit} />
-            <Route path="/negas/:id" component={Details} />
+            <Route path="/negas/details/:id" component={Details} />
             <Route path="/negas/new" component={NegaNew} />
             <Route path="/negas/" component={NegaList} />
             <Route path="*" component={Main} />

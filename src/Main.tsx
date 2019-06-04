@@ -19,11 +19,11 @@ export default class Main extends React.Component<IProps, IState> {
     negas: []
   };
 
-  private handleNew() {
+  public handleNew() {
     this.props.history.push("/negas/new");
   }
 
-  componentDidMount() {
+  public componentDidMount() {
     axiosClient.get("/negas.json").then((response: any) => {
       this.setState({ negas: response.data });
     });
@@ -45,10 +45,10 @@ export default class Main extends React.Component<IProps, IState> {
     );
   }
 
-  private renderAllNegaFilmFiles() {
+  public renderAllNegaFilmFiles() {
     return this.state.negas.map((nega: any) => {
       return (
-        <Link to={`negas/${nega.id}`}>
+        <Link to={`negas/details/${nega.id}`}>
           <img
             src={nega.film_photos[0].url.replace(
               /\/\/negabook-server.herokuapp.com/g,
