@@ -6,7 +6,6 @@ import ThemeProvider from "react-toolbox/lib/ThemeProvider";
 import createBrowserHistory from "history/createBrowserHistory";
 import App from "./App";
 import "./index.css";
-// import Apple from './apple';
 
 const history = createBrowserHistory();
 
