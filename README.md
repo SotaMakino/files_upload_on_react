@@ -1,7 +1,7 @@
-## Negabook
+## Negativebook
 ![alt text](https://github.com/SotaMakino/negabook-client/blob/master/public/screenShot2.png)
 
-Here is the url of this site: [Negabook](https://sotamakino.github.io/negabook-client/).
+Here is the url of this site: [Negativebook](https://sotamakino.github.io/negabook-client/).
 
 You can also see the backend source code: [negabook-server](https://github.com/SotaMakino/negabook-server).
 
